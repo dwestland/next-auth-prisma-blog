@@ -53,6 +53,27 @@ CREATE TABLE "verification_requests" (
     CONSTRAINT "verification_requests_pkey" PRIMARY KEY ("id")
 );
 
+-- CreateTable
+CREATE TABLE "blog" (
+    "id" SERIAL NOT NULL,
+    "title" TEXT NOT NULL,
+    "body" TEXT NOT NULL,
+    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "blog_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "blog_like" (
+    "id" SERIAL NOT NULL,
+    "like" BOOLEAN NOT NULL DEFAULT false,
+    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "blog_like_pkey" PRIMARY KEY ("id")
+);
+
 -- CreateIndex
 CREATE UNIQUE INDEX "accounts_compound_id_key" ON "accounts"("compound_id");
 
