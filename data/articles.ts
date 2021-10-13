@@ -1,105 +1,105 @@
 const articles = [
   {
     title: 'Zeus, God of the Sky (Zoos)',
-    author: 1,
+    authorId: 1,
     body: 'Distinguishing Features: Pinstriped suit, neatly trimmed grey beard, stormy eyes and a very large, dangerous lightning bolt. Now: On stormy days, he can be found brooding in his throne room in Mount Olympus, over the Empire State Building in New York. Sometimes he travels the world in disguise, so be nice to everyone! You never know when the next person you meet might be packing the master bolt. Then: In the old days, Zeus ruled over his unruly family of Olympians while they bickered and fought and got jealous of each other. Not much different than today, really. Zeus always had an eye for beautiful women, which often got him in trouble with his wife, Hera. A less-than-stellar father figure, Zeus once tossed Hera’s son Hephaestus off the top of Mount Olympus because the baby was too ugly.',
   },
   {
     title: 'Hera, Goddess of Marriage, Mothers and Families (Hair’-ah)',
-    author: 2,
+    authorId: 2,
     body: 'Distinguishing Features: Usually prefers classic Greek dresses and a simple silver crown, though she can blend in as needed. She usually appears as a beautiful older woman, and enjoys turning into birds when she needs to hide or spy. Now: She hangs out where family life is strongest: the car pool line at school, weekend soccer games, and birthday parties. That strange woman you saw at Laser Quest, serving pizza and singing Happy Birthday? Yes, that was probably her. As the goddess of family, Hera will be happy to pack your lunch or comb your hair or give you a ride to school, but don’t talk back to her. When Hera is mad, she doesn’t just ground you. She’s likely to smash you into the ground. Then: It’s tough to be the goddess of marriage in a family where everyone cheats on everybody. Hera has no patience with demigods, the children of godly affairs. She was the enemy of Heracles and many others, though she did have a soft spot for mortal heroes, like Jason. If an old woman asks you to carry her piggyback across a river, do it. You might win the favor of a goddess!',
   },
   {
     title: 'Poseidon, God of the Sea (Po-sigh’-dun)',
-    author: 3,
+    authorId: 3,
     body: 'Distinguishing Features: Hawaiian shirt, shorts, flip flops, and a three-pointed trident. Now: Poseidon walks the beaches of Florida, occasionally stopping to chat with fishermen or take pictures for tourists. If he’s in a bad mood, he stirs up a hurricane. Then: Poseidon was always a moody guy. On his good days, he did cool stuff like create horses out of sea foam. On his bad days, he caused minor problems like destroying cities with earthquakes or sinking entire fleets of ships. But hey, a god has the right to throw a temper tantrum, doesn’t he?',
   },
   {
     title: 'Demeter, Goddess of Agriculture (Duh-mee’-ter)',
-    author: 1,
+    authorId: 1,
     body: 'Distinguishing Features: The goddess prefers simple dresses of green or gold, though you can often find her in gardening clothes. Now: Demeter divides her time between the upper world, where she oversees the growing season and produces commercials encouraging people to eat more cereal products (part of a balanced breakfast!), and the Underworld, where she visits her daughter Persephone and plays the wicked mother-in-law to Hades, who kidnapped her poor little daughter eons ago. He’s still not good enough for Persephone. She should’ve married the god of doctors! Then: Demeter was one of the quieter goddess. As long as the crops were growing and the farmers were happy, Demeter was content. But don’t underestimate her importance. If you wanted to eat, you had to make sure you kept on Demeter’s good side. When Hades stole her daughter Persephone, Demeter stopped all plants from growing, and people started starving. Hard to make a cheeseburger with no grain for bread and no grass for the cows.',
   },
   {
     title: 'Ares, God of War (Air’-eez)',
-    author: 2,
+    authorId: 2,
     body: 'Distinguishing Features: Biker leathers, Harley Davidson, sunglasses and a stinking attitude. Now: Can be found riding his Harley around the suburbs of LA. One of those gods who could pick a fight in an empty room. Then: Back in the day, this son of Zeus and Hera used to be inseparable from his shield and helmet. Fought on the side of the Trojans during the war of Troy, but, frankly, has been involved in every minor skirmish since Goldilocks told the three bears that their beds were a little uncomfy.',
   },
   {
     title: 'Athena,Goddess of Wisdom, War, and Useful Arts (Ah-thee’-nah)',
-    author: 3,
+    authorId: 3,
     body: 'Distinguishing Features: Dark hair, striking grey eyes, casual yet fashionable clothes (except when she’s going into battle; then it’s full body armor). Athena is always accompanied by at least one owl, her sacred (and fortunately housebroken) animal. Now: You’re likely to spot Athena at an American university, sitting in on lectures about military history or technology. She favors people who invent useful things, and will sometimes appear to reward them with magical gifts or bits of useful advice (like next week’s lottery numbers). So start working on that revolutionary new bread slicer! Then: Athena was one of the most active goddesses in human affairs. She helped out Odysseus, sponsored the entire city of Athens and made sure the Greeks won the Trojan War. On the downside, she’s proud and has a big temper. Just ask Arachne, who got turned into a spider for daring to compare her weaving skills to Athena’s. So whatever you do, DO NOT claim that you fix toilets better than Athena. There’s no telling what she’ll turn you into.',
   },
   {
     title:
       'Apollo, God of archery, music, poetry, prophecy, medicine, and later on the god of the sun. (Ah-paul’-oh)',
-    author: 1,
+    authorId: 1,
     body: 'Distinguishing Features: You’ve got to dig the shades. Apollo likes to look hot, and I don’t mean temperature. He typically looks like a movie star with the fashionably shabby clothes, the laid back attitude, the brilliant smile, and the Ray Ban sunglasses. His sun chariot morphs into a fine Maserati. Now: Do NOT ask him to recite his poetry. Seriously. You can find Apollo cruising down Sunset Avenue looking cool, or hanging out at parties chatting with writers or rock stars. He likes to be the center of attention wherever he goes. He’s a nice enough guy, as long as you agree that he’s the coolest person on earth. Just don’t get him angry, or he can get a little hot under the collar. Then: Apollo was into everything, from music to medicine, probably because he thought he was better at everything than anyone else. When the old sun god Helios retired, Apollo took over that job too, though he was mostly thought of as the god of poetry and music. Apollo didn’t take criticism well. One time he asked King Midas to judge a contest between him and Pan, and when Midas decided Pan’s music was better, Apollo gave the king donkey ears. The lesson: if someone asks your opinion, think carefully before you answer.',
   },
   {
     title:
       'Artemis, Goddess of the moon, the hunt, and young maidens (Ar’-tem-iss)',
-    author: 2,
+    authorId: 2,
     body: 'Distinguishing features: Artemis likes to appear as a regular mortal maiden of about twelve or thirteen, but don’t let that fool you. Artemis is deadly with her bow, and doesn’t suffer fools, especially male fools. Her eyes are silver like the moon, and she tends to dress in white and silver. Now: Artemis can be found roaming the countryside with her handmaidens, the Hunters of Artemis. Imagine an immortal, very deadly Girl Scout troop, on a permanent camp out, hunting monsters. Don’t get in their way, and don’t try to flirt with them. These Girl Scouts do NOT sell cookies. Then: Artemis enjoyed hunting with her handmaidens and basically kept to herself unless she was bothered. Once a male hunter tried to spy on Artemis while she was bathing. The goddess turned him into a deer and her hunters tracked him down and killed him. Basically, she doesn’t have much of a sense of humor when it comes to peeping toms.',
   },
   {
     title: 'Hephaestus, God of blacksmiths and fire (Huh-fess’-tus)',
-    author: 3,
+    authorId: 3,
     body: 'Distinguishing Features: Ugly face, scraggly beard, massive powerful hands. Usually wears a mechanic’s uniform with his name embroidered on the pocket so he doesn’t forget who he is. Now: The god likes to hang out in his workshop fixing cars and building inventions. He’s not very good with people, but he can do anything with machines. You want a robot to do your homework, or a life-sized metal giant to stomp on your enemies. Hephaestus can have one ready in a matter of hours. Then: Poor Hephaestus was ugly from birth, but he didn’t get any prettier when his parents chucked him down the side of Mount Olympus, making him a cripple forever after. He’s not much to look at, but he’s clever with his hands. The Olympians made Aphrodite marry him, thinking that it would settle her down, but that didn’t work out too well. Hephaestus is a jealous husband, always on the lookout for that scoundrel Ares and anyone else who might want to flirt with his wife (which is basically every man with a pulse).',
   },
   {
     title: 'Aphrodite, Goddess of Love and Beauty (Ă-fro-dī’-tee)',
-    author: 1,
+    authorId: 1,
     body: 'Distinguishing Features: She’s really, really pretty. It’s hard to be more specific, because Aphrodite can change her appearance to become whatever you find most beautiful. Now: She’s more beautiful than Angelina Jolie. She can often be found shopping on Fifth Avenue or trying on new clothes during Fashion Week in New York. She loves parties, and can’t get enough of gossip. If that sounds like a lot of people you know, you’re probably right. Any of them might be Aphrodite in disguise. Then: She’s more beautiful than Helen of Troy. Aphrodite wasn’t afraid to use her beauty to get what she wanted, either. She promised Prince Paris the most beautiful mortal woman in the world if he judged Aphrodite the fairest goddess in a contest, and Paris readily agreed. When he got Helen for his wife, it started the Trojan War and thousands died, but hey, at least Aphrodite got what she wanted!',
   },
   {
     title: 'God of the Roadways, Travelers, Merchants and Thieves (Her’-meez)',
-    author: 2,
+    authorId: 2,
     body: 'Distinguishing Features: Jogger’s clothes and winged athletic shoes, a cell phone that turns into the caduceus, his symbol of power – a winged staff with two snakes, George and Martha, entwined around it. Now: Hermes is a hard person to find, because he’s always on the run. When he’s not delivering messages for the gods, he’s running a telecommunications company, an express delivery service, and every other type of business you can imagine that involves travel. Did you have a question about his activities as god of thieves? Leave a message. He’ll get back to you in a few millennia. Then: Hermes got started young as a troublemaker. When he was one day old, he sneaked out of his crib and stole some cattle from his brother Apollo. Apollo probably would’ve blasted the young tyke to bits, but fortunately Hermes appeased him with a new musical instrument he created called the lyre. Apollo liked it so much he forgot all about the cows. The lyre made Apollo very popular with the ladies, which was more than he could say about the cattle.',
   },
   {
     title: 'Dionysus, God of Wine (Dī-oh-nī’-sus)',
-    author: 3,
+    authorId: 3,
     body: 'Distinguishing Features: Leopard-skin shirt, walking shorts, purple socks and sandals, the general pasty demeanor of someone who has been up partying much too late.Now: Dionysus has been sentenced to one hundred years of “rehab” as director of Camp Half-Blood. The only thing the god of wine can drink these days is Diet Coke, which doesn’t make him happy. He can usually be found playing pinochle with a group of terrified satyrs on the front porch of the Big House. If you want to join the game, be prepared to bet large. Then: Dionysus invented wine, which so impressed his father Zeus that he promoted Dionysus to god. The guy who invented prune juice, by contrast, got sentenced to the Fields of Punishment. Dionysus mostly spent his time partying it up in Ancient Greece, but once a crew of sailors tried to kill him, thinking the god was too incapacitated to fight back. Dionysus turned them into dolphins and sent them over the side. The moral of this story: Do not mess with a god, even a drunk one.',
   },
   {
     title: 'Hades, God of the Underworld (Hay’-deez)',
-    author: 1,
+    authorId: 1,
     body: 'Distinguishing Features: Evil smile, helm of darkness (which makes him invisible, so you can’t see the evil smile), black robes sewn from the souls of the damned. He sits on a throne of bones. Now: Hades rarely leaves his obsidian palace in the Underworld, probably because of traffic congestion on the Fields of Asphodel freeway. He oversees a booming population among the dead and has all sorts of employment trouble with his ghouls and specters. This keeps him in a foul mood most of the time. Then: Hades is best known for the romantic way he won his wife, Persephone. He kidnapped her. Really, though, how would you like to marry someone who lives in a dark cave filled with zombies all year round?',
   },
   {
     title: 'Hypnos, God of Sleep (Hip-nos)',
-    author: 2,
+    authorId: 2,
     body: 'Distinguishing features: Hypnos appears as a young man with wings sprouting from his brow, probably to keep him from doing a face plant whenever he falls asleep. He carries a poppy stem and a branch dripping in water from the River Lethe, which can make you forget anything, even tomorrow’s history test. Sometimes he is seen carrying an upside-down torch. Why? Probably because the flames keep him awake. Now: Hypnos lives in Erebos, deep in the Underworld, but can often be found trying out the mattresses at the Sleep Shop. He is the son of Nyx (Night) and loves putting people to sleep. If you’re lucky, he’ll wait until you are actually in bed before he conks you out. If you’re unlucky, he’ll put you to sleep in the middle of algebra class. He is the brother of Thanatos (Death). But unlike his brother, Hypnos might let you wake up eventually. Then: Hypnos could be good or bad in ancient times. He brought rest and dreams, but he could also sneak up on you and cause you to doze off at bad moments. In his Roman form of Somnus, the god liked to make sentries fall asleep on duty (which was an automatic death sentence) or make ship navigators fall asleep at the wheel. “Somnus made me do it!” is not a good defense when trying to explain to your captain why you steered the trireme into the side of a cliff.',
   },
   {
     title: 'Nike, Goddess of Victory (Ni-key)',
-    author: 3,
+    authorId: 3,
     body: 'Distinguishing features: Nike has the wings of an angel and rides a chariot. She usually has a golden laurel wreath handy to give to the winners of major battles, sports competitions, and the state lottery. Now: If you ever meet Nike, you should not say, “Hey, isn’t that a kind of sports shoe?” unless you want to lose every competition for the rest of your life. The goddess does not find it amusing to be confused with footwear. You are likely to meet Nike at the World Series, the Superbowl, and most other major sporting events, where she will be hovering overheard, deciding which team to grant victory. She values bravery and skill, though she also likes a good halftime show. Then: Nike was very popular, since everybody wanted victory. Olympic athletes would sacrifice to her, as would soldiers before a big battle. Nike would sometimes serve as Athena’s charioteer in battle. After all, the goddess of victory is pretty much the best wheelman you can ask for.',
   },
   {
     title: 'Janus, God of beginnings, choices and doorways (Jay-nus)',
-    author: 1,
+    authorId: 1,
     body: 'Distinguishing features: Kind of hard to miss Janus, since he has two faces. He can be a pain, since he can never make up his mind and tends to argue with himself. On the bright side, he can sing a solo in two-part harmony. Now: Janus likes to dress as a New York City doorman. He shows up just when heroes have an important choice to make, usually offering them two doors to choose from. At least one of the doors typically leads to a nasty death. Janus isn’t all bad. He can open many doors and he stands for new beginnings, but think carefully before making choices. Janus won’t let you change your mind afterwards! Then: Janus was one of the most important Roman gods. January, the beginning month of the year, was named after him. It’s said that Janus showed Saturn hospitality when he fled to Italy after the Titan war, so Saturn gave Janus the power to see both the past and the future. Twice the faces. Twice the fun! Gee, thanks, Saturn. Super gift.',
   },
   {
     title: 'Nemesis, Goddess of Revenge (Nim-uh-sis)',
-    author: 2,
+    authorId: 2,
     body: 'Distinguishing features: Nemesis is often pictured as a winged maiden, but don’t confuse her with Nike! The evil look in her eyes should tell you that this lady is not here to give you victory. Nemesis’s symbol is a scale, with which she measures how much fortune you actually deserve. If you’ve gotten more than your fair share, she brings out her other tools – a lash and a sword. She also carries a wheel sometimes, symbolizing how fate can turn on you. Notice above she is trampling some poor fool underfoot. She just loves doing that. Now: Nemesis usually hangs around the classroom the day major projects are due. All those who put off working until the last minute are likely to feel her lash. She hates it when things work out for people who don’t deserve it, and thinks her sister Fortuna is way too generous with the good luck. Whenever you feel like things are going too well, like something bad has got to happen to balance it out – that’s the shadow of Nemesis falling over you. She’s all about payback. If it seems like somebody is out to get you, she is. Then: Nemesis was feared more than she was worshipped. The Greeks and Romans didn’t really have the concept of karma, but Nemesis was pretty close. Whenever something good happens, you’d better look out, because Nemesis is probably watching, ready to balance things out with a little bad luck. Watch your step and stay humble!',
   },
   {
     title: 'Iris, Goddess of the rainbow, messenger of the gods (Eye-ris)',
-    author: 3,
+    authorId: 3,
     body: 'Distinguishing features: Iris appears as a beautiful maiden with wings (rainbow-colored, naturally) carrying the symbolic staff of a herald like Hermes. When she’s not running around delivering messages, she serves nectar to Zeus and Hera in the throne room on Olympus, which is not as exciting but does let her rest her wings. Now: Iris is constantly in demand to deliver Iris-messages for demigods. While this brings her a lot of supplemental income, she does wish Zeus would let her upgrade her network to 4G, since her coverage is spotty in many metropolitan areas. Then: Iris was mostly the handmaiden to Hera. She never got much attention in the old myths, but everyone was always happy to see her. Much like a rainbow, she would show up where you least expected her and then disappear quietly. The colorful part of the eye, the Iris, is named after her. Not much of a tribute, but better than nothing, I guess.',
   },
   {
     title:
       'Hecate, Goddess of magic, crossroads and ghosts (Heck’-ate or Heh-cah’-tay)',
-    author: 1,
+    authorId: 1,
     body: 'Distinguishing features: Hecate is usually dressed in dark robes, holding twin torches (all the better to see you and burn you with, my dear). She is accompanied by a she-dog and a polecat, which used to be her enemies before she morphed them into animals. In later times, Hecate was pictured as a woman with three heads, or three entirely different forms for morning, noon and night. Talk about split personalities. Now: Hecate is the daughter of the Titans, and although she sided with the gods in the Titan war, she’s a mysterious and crafty figure. Magic is her territory, and her followers include Circe and Medea, who were not exactly girl scouts. You can find Hecate in foggy graveyards, or at abandoned crossroads at night. If you see a woman with two torches, be nice to her, unless you want to become one of her animal familiars. Then: Hecate was a goddess to be feared. The Greeks and Romans respected her power, but didn’t usually worship her. She was the goddess of dark and unknown forces, and the fact that she had three different forms meant you never knew whether she would be a good cop or a bad cop. It was best just to steer clear!',
   },
   {
     title: 'Tyche, Goddess of good luck and fortune (Tike-ee)',
-    author: 2,
+    authorId: 2,
     body: "Distinguishing features: Tyche can look just like Nemesis, her sister, which means you’ve got to be careful. Sometimes good luck can look like bad luck, and vice versa! Tyche usually holds a cornucopia, the horn of plenty, which is filled with nuts, berries, fruitcakes, bonbons, and all kinds of goodies representing the fortunes she bestows on mankind. The horn of plenty has become a symbol of Thanksgiving in America thanks to Tyche. She is also pictured with an orb – a ball which can roll in any direction, just as a reminder than good luck doesn’t always roll your way. Now: Tyche is a hard goddess to find. People are always looking for her at the racetrack, the casino and the lottery ticket dealer, but she hardly ever hangs out there. She mostly likes to give good luck to those who worked hard to get it. Nevertheless, sometimes Tyche gets random. Next time you find a bag of cash in the street, you know whom to thank. Then: People don't change! Back in the day, Greeks and Romans prayed for Tyche's favor at gambling, contests, and competitions. Funny thing about Tyche, though. She hardly ever shows up when you call. She prefers to surprise you. Sadly, her sister Nemesis does too.",
   },
 ]

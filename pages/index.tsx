@@ -11,7 +11,7 @@ const IndexPage = () => {
   if (session) {
     return (
       <div>
-        Hello, {session.user.email ?? session.user.name} <br />
+        Hello, {session.user.name ?? session.user.email} <br />
         <button type="button" onClick={() => signOut()}>
           Sign out
         </button>

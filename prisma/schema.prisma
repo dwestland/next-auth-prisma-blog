@@ -50,6 +50,9 @@ model User {
   createdAt     DateTime  @default(now()) @map(name: "created_at")
   updatedAt     DateTime  @default(now()) @map(name: "updated_at")
 
+  blogs    Blogs[]
+  blogLike BlogLikes[]
+
   @@map(name: "users")
 }
 
@@ -65,23 +68,33 @@ model VerificationRequest {
   @@map(name: "verification_requests")
 }
 
-model Blog {
-  id        Int      @id @default(autoincrement())
-  title     String
-  body      String
+model Blogs {
+  id    Int    @id @default(autoincrement())
+  title String
+  body  String
+
+  blogLike BlogLikes[]
+
+  author   User @relation(fields: [authorId], references: [id])
+  authorId Int  @map(name: "author_id")
 
   createdAt DateTime @default(now()) @map(name: "created_at")
   updatedAt DateTime @default(now()) @map(name: "updated_at")
 
-  @@map(name: "blog")
+  @@map(name: "blogs")
 }
 
-model BlogLike {
-  id        Int      @id @default(autoincrement())
-  like      Boolean  @default(false)
+model BlogLikes {
+  id   Int     @id @default(autoincrement())
+  like Boolean
+
+  user   User @relation(fields: [userId], references: [id])
+  userId Int  @map(name: "user_id")
+  blog   Blogs @relation(fields: [blogId], references: [id])
+  blogId Int  @map(name: "blog_id")
 
   createdAt DateTime @default(now()) @map(name: "created_at")
   updatedAt DateTime @default(now()) @map(name: "updated_at")
 
-  @@map(name: "blog_like")
+  @@map(name: "blog_likes")
 }
