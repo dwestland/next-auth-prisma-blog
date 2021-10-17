@@ -14,6 +14,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             name: true,
           },
         },
+        _count: {
+          select: {
+            blogLike: true,
+          },
+        },
       },
     })
     res.status(200).json({ data })
