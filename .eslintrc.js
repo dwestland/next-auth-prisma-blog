@@ -39,4 +39,7 @@ module.exports = {
       version: 'latest',
     },
   },
+  globals: {
+    JSX: true,
+  },
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 import { signIn, signOut, useSession } from 'next-auth/client'
+import Link from 'next/link'
 
 const IndexPage = () => {
   const [session, loading] = useSession()
@@ -15,6 +16,11 @@ const IndexPage = () => {
         <button type="button" onClick={() => signOut()}>
           Sign out
         </button>
+        <br />
+        <br />
+        <Link href="/blogs">
+          <a href="/#">Blogs</a>
+        </Link>
       </div>
     )
   }
@@ -25,6 +31,11 @@ const IndexPage = () => {
       <button type="button" onClick={() => signIn()}>
         Sign in
       </button>
+      <br />
+      <br />
+      <Link href="/blogs">
+        <a href="/#">Blogs</a>
+      </Link>
     </div>
   )
 }

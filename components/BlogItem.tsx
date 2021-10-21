@@ -14,9 +14,8 @@ interface BlogProps {
   }
 }
 
-const BlogItem: FC<BlogProps> = (props: BlogProps): JSX.Element => {
-  const { title, author, _count } = props.article
-
+const BlogItem: FC<BlogProps> = ({ article }): JSX.Element => {
+  const { title, author, _count } = article
   const bestName = author.name ?? author.email
 
   return (
