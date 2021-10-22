@@ -1,6 +1,7 @@
 import React from 'react'
 import { useQuery } from 'react-query'
 import BlogItem from '../components/BlogItem'
+import styles from '../styles/Blogs.module.css'
 
 interface Articles {
   articles: {}[]
@@ -12,6 +13,7 @@ interface Article {
   author: {
     name: string
     email: string
+    id: number
   }
   _count: {
     blogLike: number
@@ -38,9 +40,8 @@ export default function Blogs() {
   }
 
   return (
-    <div>
+    <div className={styles.blogs}>
       <h1>Blogs</h1>
-
       <div>
         {data.articles.map((article: Article) => (
           <BlogItem key={article.title} article={article} />

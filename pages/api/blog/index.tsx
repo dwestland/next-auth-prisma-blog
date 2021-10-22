@@ -13,6 +13,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           select: {
             name: true,
             email: true,
+            id: true,
           },
         },
         _count: {
