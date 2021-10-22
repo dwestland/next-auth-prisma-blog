@@ -1,7 +1,8 @@
 import React from 'react'
 import { useQuery } from 'react-query'
-import BlogItem from '../components/BlogItem'
-import styles from '../styles/Blogs.module.css'
+import Link from 'next/link'
+import BlogItem from '../../components/BlogItem'
+import styles from '../../styles/Blogs.module.css'
 
 interface Articles {
   articles: {}[]
@@ -42,6 +43,9 @@ export default function Blogs() {
   return (
     <div className={styles.blogs}>
       <h1>Blogs</h1>
+      <Link href="/blogs/add">
+        <a href="/#">Add Blog</a>
+      </Link>
       <div>
         {data.articles.map((article: Article) => (
           <BlogItem key={article.title} article={article} />
