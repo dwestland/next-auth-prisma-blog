@@ -7,6 +7,9 @@
 - Prisma
 - Postgres
 - Next Auth
+  - Google OAuth
+  - GitHub OAuth
+  - Passwordless
 - React Query
 - React Toastify
 

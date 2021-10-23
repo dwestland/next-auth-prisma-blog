@@ -3,6 +3,7 @@ import { Provider } from 'next-auth/client'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { AppProps } from 'next/app'
 import React from 'react'
+import '../styles/globals.css'
 
 const queryClient = new QueryClient()
 
