@@ -54,24 +54,27 @@ CREATE TABLE "verification_requests" (
 );
 
 -- CreateTable
-CREATE TABLE "blog" (
+CREATE TABLE "blogs" (
     "id" SERIAL NOT NULL,
     "title" TEXT NOT NULL,
     "body" TEXT NOT NULL,
+    "author_id" INTEGER NOT NULL,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-    CONSTRAINT "blog_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "blogs_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
-CREATE TABLE "blog_like" (
+CREATE TABLE "blog_likes" (
     "id" SERIAL NOT NULL,
-    "like" BOOLEAN NOT NULL DEFAULT false,
+    "like" BOOLEAN NOT NULL,
+    "user_id" INTEGER NOT NULL,
+    "blog_id" INTEGER NOT NULL,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-    CONSTRAINT "blog_like_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "blog_likes_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex
@@ -97,3 +100,12 @@ CREATE UNIQUE INDEX "users_email_key" ON "users"("email");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "verification_requests_token_key" ON "verification_requests"("token");
+
+-- AddForeignKey
+ALTER TABLE "blogs" ADD CONSTRAINT "blogs_author_id_fkey" FOREIGN KEY ("author_id") REFERENCES "users"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "blog_likes" ADD CONSTRAINT "blog_likes_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "blog_likes" ADD CONSTRAINT "blog_likes_blog_id_fkey" FOREIGN KEY ("blog_id") REFERENCES "blogs"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

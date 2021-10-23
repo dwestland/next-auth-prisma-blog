@@ -19,7 +19,7 @@ const IndexPage = () => {
         <br />
         <br />
         <Link href="/blogs">
-          <a href="/#">Blogs</a>
+          <a>Blogs</a>
         </Link>
       </div>
     )

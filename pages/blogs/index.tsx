@@ -40,13 +40,18 @@ export default function Blogs() {
     return <span>Error: {error?.message}</span>
   }
 
+  if (data.articles.length === 0) {
+    console.log('%c No blogs ', 'background: red; color: white')
+  }
+
   return (
     <div className={styles.blogs}>
       <h1>Blogs</h1>
       <Link href="/blogs/add">
-        <a href="/#">Add Blog</a>
+        <a>Add Blog</a>
       </Link>
       <div>
+        {data.articles.length === 0 && <h3>No Articles</h3>}
         {data.articles.map((article: Article) => (
           <BlogItem key={article.title} article={article} />
         ))}
