@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import { ToastContainer, toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
+import toast, { Toaster } from 'react-hot-toast'
 import { useRouter } from 'next/router'
 import styles from '../../styles/Form.module.css'
 
@@ -24,6 +23,7 @@ const AddBlog = () => {
 
     if (hasEmptyFields) {
       toast.error('Please fill in all fields')
+      return null
     }
 
     const res = await fetch(`${process.env.NEXT_PUBLIC_API}/events`, {
@@ -38,7 +38,7 @@ const AddBlog = () => {
     if (!res.ok) {
       if (res.status === 403 || res.status === 401) {
         toast.error('No token included')
-        return
+        return null
       }
       toast.error('Something Went Wrong')
     } else {
@@ -51,12 +51,16 @@ const AddBlog = () => {
       'background: red; color: white',
       values.title
     )
+
+    console.log('%c values.body ', 'background: red; color: white', values.body)
+
+    return null
   }
 
   return (
     <div className={styles.formPage}>
       <h1>Add Blog</h1>
-      <ToastContainer />
+      <Toaster />
       <form onSubmit={handleSubmit} className={styles.form}>
         <div>
           <div className={styles.section}>
@@ -83,7 +87,7 @@ const AddBlog = () => {
             </label>
           </div>
         </div>
-        <input type="submit" value="Add Blog" />
+        <input type="submit" value="Add Blog" className="btn" />
       </form>
     </div>
   )
