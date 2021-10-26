@@ -33,6 +33,12 @@ const options = {
   adapter: Adapters.Prisma.Adapter({
     prisma,
   }),
+  callbacks: {
+    session(session, user) {
+      session.id = user.id
+      return session
+    },
+  },
 
   secret: process.env.SECRET,
 }
