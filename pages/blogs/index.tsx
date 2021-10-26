@@ -2,7 +2,6 @@ import React from 'react'
 import { useQuery } from 'react-query'
 import Link from 'next/link'
 import BlogItem from '../../components/BlogItem'
-import styles from '../../styles/Blogs.module.css'
 
 interface Articles {
   articles: {}[]
@@ -24,12 +23,14 @@ interface Article {
 export default function Blogs() {
   const fetchArticles = async () => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API}/blog`)
+
     return res.json()
   }
 
   const { data, error, isLoading, isError } = useQuery<Articles, Error>(
     'articles',
     fetchArticles
+    // { staleTime: 2000 }
   )
 
   if (isLoading) {
@@ -45,10 +46,10 @@ export default function Blogs() {
   }
 
   return (
-    <div className={styles.blogs}>
+    <div className="container">
       <h1>Blogs</h1>
       <Link href="/blogs/add">
-        <a>Add Blog</a>
+        <a className="btn">Add Blog</a>
       </Link>
       <div>
         {data.articles.length === 0 && <h3>No Articles</h3>}
