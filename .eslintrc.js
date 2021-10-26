@@ -41,6 +41,7 @@ module.exports = {
         aspects: ['invalidHref', 'preferButton'],
       },
     ],
+    'no-param-reassign': 0,
   },
   settings: {
     react: {
