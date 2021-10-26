@@ -10,10 +10,14 @@ const IndexPage = () => {
   }
 
   if (session) {
+    console.log('%c session ', 'background: black; color: white', session)
+
     return (
-      <div>
-        Hello, {session.user.name ?? session.user.email} <br />
-        <button type="button" onClick={() => signOut()}>
+      <div className="container">
+        Hello, {session.user.name ?? session.user.email}
+        <br />
+        <br />
+        <button type="button" className="btn" onClick={() => signOut()}>
           Sign out
         </button>
         <br />
@@ -26,9 +30,11 @@ const IndexPage = () => {
   }
 
   return (
-    <div>
-      You are not logged in! <br />
-      <button type="button" onClick={() => signIn()}>
+    <div className="container">
+      You are not logged in
+      <br />
+      <br />
+      <button type="button" className="btn" onClick={() => signIn()}>
         Sign in
       </button>
       <br />

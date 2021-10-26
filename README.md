@@ -6,12 +6,12 @@
 - TypeScript
 - Prisma
 - Postgres
-- Next Auth
+- Next Auth 3 (current version is 4)
   - Google OAuth
   - GitHub OAuth
   - Passwordless
 - React Query
-- React Toastify
+- React Hot Toast
 
 Add react-query:
 npm i react-query
