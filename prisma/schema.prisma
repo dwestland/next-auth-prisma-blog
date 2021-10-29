@@ -70,7 +70,7 @@ model VerificationRequest {
 
 model Blogs {
   id    Int    @id @default(autoincrement())
-  title String
+  title String @unique
   body  String
 
   blogLike BlogLikes[]
