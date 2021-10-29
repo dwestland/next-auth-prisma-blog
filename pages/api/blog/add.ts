@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { PrismaClient, Prisma } from '.prisma/client'
+import { PrismaClient } from '.prisma/client'
 
 const prisma = new PrismaClient()
 
@@ -28,4 +28,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   } catch (err) {
     res.status(400).json({ message: 'Something went wrong' })
   }
+  return null
 }

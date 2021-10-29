@@ -1,10 +1,45 @@
-import React, { useState } from 'react'
+// import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import toast, { Toaster } from 'react-hot-toast'
 import { useRouter } from 'next/router'
+import { useSession } from 'next-auth/client'
+import { useQuery } from 'react-query'
 import styles from '../../styles/Form.module.css'
 
+// interface Blog {
+//   title: string
+//   body: string
+//   authorId: number
+// }
+
+interface Article {
+  body: string
+  title: string
+  author: {
+    name: string
+    email: string
+    id: number
+  }
+  _count: {
+    blogLike: number
+  }
+}
+
 const AddBlog = () => {
-  const [values, setValues] = useState({ title: '', body: '' })
+  const [values, setValues] = useState({ title: 'z', body: 'zz', authorId: 0 })
+  console.log('%c values ', 'background: red; color: white', values)
+
+  const [session] = useSession()
+
+  const id = 2
+
+  useEffect(() => {
+    setValues({ ...values, authorId: id })
+  }, [session])
+
+  // setValues({ ...values, authorId: id })
+
+  // setValues({ values: { authorId: id } })
 
   const router = useRouter()
 
@@ -26,7 +61,26 @@ const AddBlog = () => {
       return null
     }
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API}/events`, {
+    const titleExists = async () => {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API}/blog/titleExists`)
+
+      return res.json()
+    }
+
+    const boom = useQuery(
+      'titleExists',
+      titleExists
+      // { staleTime: 2000 }
+    )
+
+    console.log('%c boom ', 'background: red; color: white', boom)
+
+    if (false) {
+      toast.error('Title Exist, no duplicate titles')
+      return null
+    }
+
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API}/blog/add`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

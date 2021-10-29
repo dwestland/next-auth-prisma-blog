@@ -9,25 +9,17 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   try {
-    const articles = await prisma.blogs.findMany({
-      select: {
-        body: true,
-        title: true,
-        author: {
-          select: {
-            name: true,
-            email: true,
-            id: true,
-          },
-        },
-        _count: {
-          select: {
-            blogLike: true,
-          },
-        },
+    const titleExists: number = await prisma.blogs.count({
+      where: {
+        title: 'xxxx',
       },
     })
-    res.status(200).json({ articles })
+    let data = false
+    if (titleExists !== 0) {
+      data = true
+    }
+    // console.log('%c titleExists ', 'background: red; color: white' titleExists)
+    res.status(200).json(data)
   } catch (err) {
     console.log(err)
     res.status(403).json({ err: 'Error occurred.' })
