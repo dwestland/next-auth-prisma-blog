@@ -1,47 +1,18 @@
-// import React, { useState } from 'react'
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import toast, { Toaster } from 'react-hot-toast'
-import { useRouter } from 'next/router'
-import { useSession } from 'next-auth/client'
-import { useQuery } from 'react-query'
+// import useTitleCount from '../../src/hooks/useTitleCount'
 import styles from '../../styles/Form.module.css'
-
-// interface Blog {
-//   title: string
-//   body: string
-//   authorId: number
-// }
-
-interface Article {
-  body: string
-  title: string
-  author: {
-    name: string
-    email: string
-    id: number
-  }
-  _count: {
-    blogLike: number
-  }
-}
 
 const AddBlog = () => {
   const [values, setValues] = useState({ title: 'z', body: 'zz', authorId: 0 })
+
   console.log('%c values ', 'background: red; color: white', values)
 
-  const [session] = useSession()
+  const isDuplicateTitle = (title) => {
+    console.log('%c title ', 'background: green; color: white', title)
 
-  const id = 2
-
-  useEffect(() => {
-    setValues({ ...values, authorId: id })
-  }, [session])
-
-  // setValues({ ...values, authorId: id })
-
-  // setValues({ values: { authorId: id } })
-
-  const router = useRouter()
+    return true
+  }
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
@@ -61,43 +32,11 @@ const AddBlog = () => {
       return null
     }
 
-    const titleExists = async () => {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API}/blog/titleExists`)
+    const duplicateTitle: boolean = isDuplicateTitle(values.title)
 
-      return res.json()
-    }
-
-    const boom = useQuery(
-      'titleExists',
-      titleExists
-      // { staleTime: 2000 }
-    )
-
-    console.log('%c boom ', 'background: red; color: white', boom)
-
-    if (false) {
-      toast.error('Title Exist, no duplicate titles')
+    if (duplicateTitle) {
+      toast.error('Title exists, title must be unique')
       return null
-    }
-
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API}/blog/add`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        // Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(values),
-    })
-
-    if (!res.ok) {
-      if (res.status === 403 || res.status === 401) {
-        toast.error('No token included')
-        return null
-      }
-      toast.error('Something Went Wrong')
-    } else {
-      const evt = await res.json()
-      router.push(`/events/${evt.slug}`)
     }
 
     console.log(
@@ -105,8 +44,9 @@ const AddBlog = () => {
       'background: red; color: white',
       values.title
     )
-
     console.log('%c values.body ', 'background: red; color: white', values.body)
+
+    setValues({ title: '', body: '', authorId: null })
 
     return null
   }

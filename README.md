@@ -1,32 +1,40 @@
 # next-auth-prisma-blog
 
-## User story
+A blog site with authentication
+
+**Run local dev environment:**
+
+```
+npm run dev
+```
+
+## User Story
 
 - User can login using GitHub and Google OAuth and passwordless login
-- Retrieve blogs
-- Display only user's blogs
-- Display only user's likes
-- Display single blog detail with like functionality
+- Retrieve blogs:
+  - Display all blogs
+  - Display only user's blogs
+  - Display only user's likes
+  - Display single blog detail with like functionality
 - User can create a blog
-- User can edit and delete their own blog
-- Can only create blog with unique title
-- User can favorite and unfavorite a blog but not their own
-- Liking a blog will have preemptive display
+- User can edit and delete only their own blog
+- Can only create blog with a unique title
+- User can like and unlike a blog but cannot like their own
+- Liking a blog will have preemptive UI display
 
 Requires SendGrid?
 
-## The Stack:
+## Stack
 
-- Next 11
+- Next 11 (current version is 12)
 - TypeScript
 - Prisma 3
 - Postgres
-- Next Auth 3 (current version is 4)
+- Next Auth 3 (beta 4 is out)
   - Google OAuth
   - GitHub OAuth
   - Passwordless
 - React Query 3
-- React Hot Toast
 
 Add react-query:
 npm i react-query
@@ -36,12 +44,6 @@ npm i react-loader-spinner
 
 ## Set up local dev environment
 
-**Run local dev environment:**
-
-```
-npm run dev
-```
-
 ### Set up database
 
 **Install libraries:**
@@ -50,45 +52,49 @@ npm run dev
 npm i
 ```
 
-**Add secrets:**
+## Add Secrets:
 
-Create .env in root using .env.example as a guide:
+Create .env in root using .env.example as a guide. Must have local Postgres available:
 
 ```ini
 # Prisma
-DATABASE_URL=postgresql://don@localhost:5432/next_auth_prisma_blog?schema=public
+DATABASE_URL=postgresql://johndoe:mypassword@localhost:5432/next_auth_prisma_blog?schema=public
 
 # Next Auth
-SECRET= # random string
+SECRET=# random string
 
-# NEXTAUTH_URL= # Canonical URL when your deploy to production
+# NEXTAUTH_URL= # Canonical URL when you deploy to production
+```
 
+To setup GitHub OAuth secrets, see https://github.com/dwestland/next-auth-github for instructions on ???
+
+```ini
 # Next Auth GitHub provider
 GITHUB_ID=
 GITHUB_SECRET=
+```
 
-See https://github.com/dwestland/next-auth-github for instructions on ???
+To setup passwordless login secrets, you will need a SendGrid ??? see https://github.com/dwestland/next-auth-passwordless for instructions on ???
 
+```ini
 # Next Auth SendGrid passwordless provider
 EMAIL_SERVER_HOST=smtp.sendgrid.net
 EMAIL_SERVER_PORT=465
-EMAIL_SERVER_USER=apikey
+EMAIL_SERVER_USER=# API key
 EMAIL_SERVER_PASSWORD=
-EMAIL_FROM=admin@westland.net
+EMAIL_FROM=yourPostmaster@name.com
+```
 
-See https://github.com/dwestland/next-auth-passwordless for instructions on ???
+To setup Google OAuth secrets, see https://github.com/dwestland/next-auth-github for instructions on ???
 
+```ini
 # Google Next Auth Provider
 GOOGLE_CLIENT_ID=
 GOOGLE_CLIENT_SECRET=
 
-See https://github.com/dwestland/next-auth-github for instructions on ???
-
 # Next API
 NEXT_PUBLIC_API=http://localhost:3000/api
 ```
-
-See See https://github.com/dwestland/next-auth-github for instructions on ??? for instructions on ???
 
 **Migrate Prisma**
 
