@@ -101,6 +101,9 @@ CREATE UNIQUE INDEX "users_email_key" ON "users"("email");
 -- CreateIndex
 CREATE UNIQUE INDEX "verification_requests_token_key" ON "verification_requests"("token");
 
+-- CreateIndex
+CREATE UNIQUE INDEX "blogs_title_key" ON "blogs"("title");
+
 -- AddForeignKey
 ALTER TABLE "blogs" ADD CONSTRAINT "blogs_author_id_fkey" FOREIGN KEY ("author_id") REFERENCES "users"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 

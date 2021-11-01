@@ -8,12 +8,12 @@ interface Articles {
 }
 
 interface Article {
+  id: number
   body: string
   title: string
   author: {
     name: string
     email: string
-    id: number
   }
   _count: {
     blogLike: number
@@ -22,7 +22,7 @@ interface Article {
 
 export default function Blogs() {
   const fetchArticles = async () => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API}/blog`)
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API}/blogs`)
 
     return res.json()
   }
@@ -41,10 +41,14 @@ export default function Blogs() {
     return <span>Error: {error?.message}</span>
   }
 
-  if (data.articles.length === 0) {
-    console.log('%c No blogs ', 'background: red; color: white')
-  }
-
+  // if (data.articles.length === 0) {
+  //   console.log('%c No blogs ', 'background: red; color: white')
+  // }
+  // console.log(
+  //   '%c data.articles ',
+  //   'background: purple; color: white',
+  //   data.articles
+  // )
   return (
     <div className="container">
       <h1>Blogs</h1>

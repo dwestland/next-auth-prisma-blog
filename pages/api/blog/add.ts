@@ -10,10 +10,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   const { title, body, authorId } = req.body.data
 
-  console.log('%c req.body ', 'background: red; color: white', req.body)
-  console.log('%c title ', 'background: red; color: white', title)
-  console.log('%c body ', 'background: red; color: white', body)
-  console.log('%c authorId ', 'background: red; color: white', authorId)
+  console.log('%c req.body ', 'background: darkblue; color: white', req.body)
+  console.log('%c title ', 'background: darkblue; color: white', title)
+  console.log('%c body ', 'background: darkblue; color: white', body)
+  console.log('%c authorId ', 'background: darkblue; color: white', authorId)
 
   try {
     await prisma.blogs.create({

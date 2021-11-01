@@ -101,16 +101,10 @@ NEXT_PUBLIC_API=http://localhost:3000/api
 Warning: if existing migrations are deleted and migration is run (as if setting this up fo the first time), if there is a database named "next_auth_prisma_blog", it will be deleted.
 
 ```
-npx prisma migrate dev --name my-name
+npx prisma migrate dev --name my-named-migration
 ```
 
 ### Seed database
-
-**Setup user accounts**
-
-In order for the seed to work, must create at least 3 user accounts using Github, Google or Passwordless login. There must be users with IDs 1, 2, and 3.
-
-**Evoke Prisma seed:**
 
 ```
 npx prisma db seed

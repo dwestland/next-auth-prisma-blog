@@ -1,7 +1,10 @@
- 
-### Get all blogs
-GET http://localhost:3000/api/blog HTTP/1.1
+# Uses VS Code Rest Client extension
 
+### Get all blogs
+GET http://localhost:3000/api/blogs HTTP/1.1
+
+### Get blog by id
+GET http://localhost:3000/api/blog/7 HTTP/1.1
 
 ### Post blog
 GET http://localhost:3000/api/blog HTTP/1.1
@@ -15,7 +18,7 @@ Content-Type: application/json
 {
   "data":
     {
-      "title": "zxxx",
+      "title": "xxxx",
       "body": "xx oo",
       "authorId": 2
     }
