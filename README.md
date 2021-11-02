@@ -10,19 +10,17 @@ npm run dev
 
 ## User Story
 
-- User can login using GitHub and Google OAuth and passwordless login
-- Retrieve blogs:
+- User can login using GitHub or Google OAuth or passwordless login
+- User can retrieve blogs:
   - Display all blogs
   - Display only user's blogs
   - Display only user's likes
   - Display single blog detail with like functionality
 - User can create a blog
-- User can edit and delete only their own blog
-- Can only create blog with a unique title
+- Use can only create blog with a unique title
+- User can only edit and delete only their own blog
 - User can like and unlike a blog but cannot like their own
 - Liking a blog will have preemptive UI display
-
-Requires SendGrid?
 
 ## Stack
 
@@ -44,13 +42,13 @@ npm i react-loader-spinner
 
 ## Set up local dev environment
 
-### Set up database
-
 **Install libraries:**
 
 ```
 npm i
 ```
+
+### Set up database
 
 ## Add Secrets:
 
@@ -96,7 +94,9 @@ GOOGLE_CLIENT_SECRET=
 NEXT_PUBLIC_API=http://localhost:3000/api
 ```
 
-**Migrate Prisma**
+## Build Database
+
+### Migrate Prisma
 
 Warning: if existing migrations are deleted and migration is run (as if setting this up fo the first time), if there is a database named "next_auth_prisma_blog", it will be deleted.
 

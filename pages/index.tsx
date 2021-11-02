@@ -1,6 +1,6 @@
 import React from 'react'
 import { signIn, signOut, useSession } from 'next-auth/client'
-import Link from 'next/link'
+import Navbar from '../src/components/Navbar'
 
 const IndexPage = () => {
   const [session, loading] = useSession()
@@ -14,34 +14,29 @@ const IndexPage = () => {
 
     return (
       <div className="container">
-        Hello, {session.user.name ?? session.user.email}
-        <br />
-        <br />
-        <button type="button" className="btn" onClick={() => signOut()}>
-          Sign out
-        </button>
-        <br />
-        <br />
-        <Link href="/blogs">
-          <a>Blogs</a>
-        </Link>
+        <Navbar />
+        <div>
+          Hello, {session.user.name ?? session.user.email}
+          <br />
+          <br />
+          <button type="button" className="btn" onClick={() => signOut()}>
+            Sign out
+          </button>
+        </div>
       </div>
     )
   }
 
   return (
     <div className="container">
-      You are not logged in
-      <br />
-      <br />
-      <button type="button" className="btn" onClick={() => signIn()}>
-        Sign in
-      </button>
-      <br />
-      <br />
-      <Link href="/blogs">
-        <a href="/#">Blogs</a>
-      </Link>
+      <div>
+        You are not logged in
+        <br />
+        <br />
+        <button type="button" className="btn" onClick={() => signIn()}>
+          Sign in
+        </button>
+      </div>
     </div>
   )
 }

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import toast, { Toaster } from 'react-hot-toast'
+import Navbar from '../../src/components/Navbar'
 // import useTitleCount from '../../src/hooks/useTitleCount'
 import styles from '../../styles/Form.module.css'
 
@@ -52,7 +53,8 @@ const AddBlog = () => {
   }
 
   return (
-    <div className={styles.formPage}>
+    <div className={`${styles.formPage} container`}>
+      <Navbar />
       <h1>Add Blog</h1>
       <Toaster />
       <form onSubmit={handleSubmit} className={styles.form}>

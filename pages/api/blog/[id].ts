@@ -15,7 +15,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const articles = await prisma.blogs.findUnique({
       where: {
-        [id]: req.query.id,
+        id: +req.query.id,
       },
       select: {
         id: true,

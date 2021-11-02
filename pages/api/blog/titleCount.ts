@@ -4,14 +4,15 @@ import { PrismaClient } from '.prisma/client'
 const prisma = new PrismaClient()
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  const { title } = req.body.data
-
-  if (!title) {
-    return res.status(405).json({ message: 'Improper title' })
-  }
   if (req.method !== 'GET') {
     return res.status(405).json({ message: 'Method not allowed' })
   }
+
+  if (!req.body.data) {
+    return res.status(405).json({ message: 'Improper title' })
+  }
+
+  const { title } = req.body.data
 
   try {
     const titleCount: number = await prisma.blogs.count({
