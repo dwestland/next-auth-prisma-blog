@@ -1,7 +1,8 @@
 import React from 'react'
 import { useQuery } from 'react-query'
 import Link from 'next/link'
-import BlogItem from '../../components/BlogItem'
+import BlogItem from '../../src/components/BlogItem'
+import Navbar from '../../src/components/Navbar'
 
 interface Articles {
   articles: {}[]
@@ -51,6 +52,7 @@ export default function Blogs() {
   // )
   return (
     <div className="container">
+      <Navbar />
       <h1>Blogs</h1>
       <Link href="/blogs/add">
         <a className="btn">Add Blog</a>
