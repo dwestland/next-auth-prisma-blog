@@ -7,9 +7,12 @@ body {
 }
 
 .container {
+  border: 1px solid black;
   height: 100%;
+  margin: auto;
+  max-width: 650px;
   min-height: 100vh;
-  padding: 30px 20px;
+  padding: 0px 20px 30px;
 }
 
 .btn {
