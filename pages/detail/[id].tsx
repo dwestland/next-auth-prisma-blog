@@ -1,18 +1,64 @@
 import React from 'react'
 import { useQuery } from 'react-query'
+import { useRouter } from 'next/router'
 import Navbar from '../../src/components/Navbar'
 
+interface Article {
+  article: {
+    id: number
+    body: string
+    title: string
+    author: {
+      name: string
+      email: string
+    }
+    _count: {
+      blogLike: number
+    }
+  }
+}
+
 const Details = () => {
-  const data = useQuery('posts', () => fetch('/api/blog').then((res) => res))
-  // console.log('%c res ', 'background: dodgerblue; color: white', res)
+  const router = useRouter()
+  const { id } = router.query
+
+  const fetchArticle = async () => {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API}/blog/${+id}`)
+    return res.json()
+  }
+
+  const { data, error, isLoading, isError } = useQuery<Article, Error>(
+    'article',
+    fetchArticle
+    // { staleTime: 2000 }
+  )
+  console.log('%c data ', 'background: red; color: white', data)
+  if (isLoading) {
+    return (
+      <div className="container">
+        <Navbar />
+        <span>Loading...</span>
+      </div>
+    )
+  }
+
+  if (isError) {
+    return <span>Error: {error?.message}</span>
+  }
+
+  const { title, body, author, _count } = data.article
+  const bestName = author.name ?? author.email
 
   return (
     <div className="container">
       <Navbar />
       <h1>Details Page</h1>
-      <div>
-        <pre>{JSON.stringify(data.data, null, 2)}</pre>
-      </div>
+      <h2>{title}</h2>
+      <p>
+        By <i>{bestName}</i>
+      </p>
+      <p>Likes {_count.blogLike}</p>
+      <p>{body}</p>
     </div>
   )
 }
