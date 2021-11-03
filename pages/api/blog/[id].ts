@@ -13,7 +13,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   try {
-    const articles = await prisma.blogs.findUnique({
+    const article = await prisma.blogs.findUnique({
       where: {
         id: +req.query.id,
       },
@@ -34,7 +34,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         },
       },
     })
-    res.status(200).json({ articles })
+    res.status(200).json({ article })
   } catch (err) {
     console.log(err)
     res.status(403).json({ err: 'Error occurred.' })

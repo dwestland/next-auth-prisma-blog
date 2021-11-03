@@ -35,7 +35,12 @@ export default function Blogs() {
   )
 
   if (isLoading) {
-    return <span>Loading...</span>
+    return (
+      <div className="container">
+        <Navbar />
+        <span>Loading...</span>{' '}
+      </div>
+    )
   }
 
   if (isError) {

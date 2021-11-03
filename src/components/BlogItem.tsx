@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 import Link from 'next/link'
+import { FaRegHeart } from 'react-icons/fa'
 import styles from '../../styles/BlogItem.module.css'
 
 interface BlogProps {
@@ -23,13 +24,20 @@ const BlogItem: FC<BlogProps> = ({ article }): JSX.Element => {
 
   return (
     <div className={styles.blogItem}>
-      <h3>{title}</h3>
-      <Link href={`/detail/${id}`}>
-        <a>Blog detail</a>
-      </Link>
-      <p>By {bestName}</p>
-      <p>Likes {_count.blogLike}</p>
-      <p>Blog ID {id}</p>
+      <div className={styles.row}>
+        <span>
+          <strong>{title}</strong>
+        </span>
+        <div className={styles.likes}>
+          <FaRegHeart /> {_count.blogLike}
+        </div>
+      </div>
+      <div className={`${styles.row} ${styles.small}`}>
+        <span>By {bestName}</span>
+        <Link href={`/detail/${id}`}>
+          <a>Blog detail</a>
+        </Link>
+      </div>
     </div>
   )
 }
