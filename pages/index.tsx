@@ -6,7 +6,12 @@ const IndexPage = () => {
   const [session, loading] = useSession()
 
   if (loading) {
-    return <div>Loading...</div>
+    return (
+      <div className="container">
+        <Navbar />
+        <div>Loading...</div>
+      </div>
+    )
   }
 
   if (session) {
@@ -29,6 +34,7 @@ const IndexPage = () => {
 
   return (
     <div className="container">
+      <br />
       <div>
         You are not logged in
         <br />
