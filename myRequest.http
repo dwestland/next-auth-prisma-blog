@@ -25,7 +25,7 @@ Content-Type: application/json
 {
   "data":
     {
-      "title": "xxxx2",
+      "title": "xxxx",
       "body": "xx oo",
       "authorId": 2
     }
