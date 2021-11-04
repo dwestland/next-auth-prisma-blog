@@ -9,10 +9,28 @@ const AddBlog = () => {
 
   console.log('%c values ', 'background: red; color: white', values)
 
-  const isDuplicateTitle = (title) => {
-    console.log('%c title ', 'background: green; color: white', title)
+  const isDuplicateTitle = (title: string) => {
+    const myUrl = `${process.env.NEXT_PUBLIC_API}/blog/titleCount`
+    const result = true
 
-    return true
+    const boom = fetch(myUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        data: {
+          title: `${title}`,
+        },
+      }),
+    })
+      .then((res) => res.json())
+      // .then((data) => console.log(data))
+      .catch((error) => console.log('ERROR', error))
+
+    console.log('boom', boom)
+
+    return result
   }
 
   const handleInputChange = (e) => {
