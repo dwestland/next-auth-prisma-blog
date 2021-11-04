@@ -1,7 +1,10 @@
 import React, { FC } from 'react'
 import Link from 'next/link'
-import { FaRegHeart } from 'react-icons/fa'
+import { FaRegHeart, FaTrashAlt, FaPencilAlt } from 'react-icons/fa'
+import Tooltip from 'rc-tooltip'
+// import { Tooltip } from '@chakra-ui/tooltip'
 import styles from '../../styles/BlogItem.module.css'
+import 'rc-tooltip/assets/bootstrap.css'
 
 interface BlogProps {
   article: {
@@ -28,8 +31,40 @@ const BlogItem: FC<BlogProps> = ({ article }): JSX.Element => {
         <span>
           <strong>{title}</strong>
         </span>
-        <div className={styles.likes}>
-          <FaRegHeart /> {_count.blogLike}
+        <div className={styles.icons}>
+          ID:{id}
+          &nbsp;&nbsp;&nbsp;
+          <Tooltip
+            placement="top"
+            trigger={['hover']}
+            overlay={<span>Edit</span>}
+          >
+            <a className={styles.icon}>
+              <FaPencilAlt />
+            </a>
+          </Tooltip>
+          &nbsp;&nbsp;&nbsp;
+          <Tooltip
+            placement="top"
+            trigger={['hover']}
+            overlay={<span>Delete</span>}
+          >
+            <a className={styles.icon}>
+              <FaTrashAlt />
+            </a>
+          </Tooltip>
+          &nbsp;&nbsp;&nbsp;
+          <Tooltip
+            placement="top"
+            trigger={['hover']}
+            overlay={<span>Like</span>}
+          >
+            <a className={styles.icon}>
+              <FaRegHeart />
+            </a>
+          </Tooltip>
+          &nbsp;
+          {_count.blogLike}
         </div>
       </div>
       <div className={`${styles.row} ${styles.small}`}>
