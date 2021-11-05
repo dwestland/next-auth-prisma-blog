@@ -9,6 +9,7 @@
 }
 
 .form textarea {
+  font-family: inherit;
   height: 150px;
   padding: 5px;
   width: 100%;
