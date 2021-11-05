@@ -1,19 +1,18 @@
 import React, { useState } from 'react'
 import toast, { Toaster } from 'react-hot-toast'
 import Navbar from '../../src/components/Navbar'
-// import useTitleCount from '../../src/hooks/useTitleCount'
 import styles from '../../styles/Form.module.css'
 
 const AddBlog = () => {
-  const [values, setValues] = useState({ title: 'z', body: 'zz', authorId: 0 })
+  const [values, setValues] = useState({
+    title: 'xxxx',
+    body: 'My body...',
+    authorId: 0,
+  })
+  const url = `${process.env.NEXT_PUBLIC_API}/blog/titleCount`
 
-  console.log('%c values ', 'background: red; color: white', values)
-
-  const isDuplicateTitle = (title: string) => {
-    const myUrl = `${process.env.NEXT_PUBLIC_API}/blog/titleCount`
-    const result = true
-
-    const boom = fetch(myUrl, {
+  function fetchTitleCount(title) {
+    return fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -25,12 +24,46 @@ const AddBlog = () => {
       }),
     })
       .then((res) => res.json())
-      // .then((data) => console.log(data))
-      .catch((error) => console.log('ERROR', error))
+      .then((resData) => {
+        console.log('fetchTitleCount return resData ', resData)
+        return resData
+      })
+      .catch((error) => console.warn(error))
+  }
 
-    console.log('boom', boom)
+  const isDuplicateTitle = (title: string) => {
+    let titleCount = 1
 
-    return result
+    fetchTitleCount(title).then((data) => {
+      // you can access the result from the promise here
+
+      console.log(
+        '%c data.data.count ',
+        'background: pink; color: white',
+        data.data.count
+      )
+      titleCount = data
+    })
+
+    console.log('%c titleCount ', 'background: pink; color: white', titleCount)
+
+    if (titleCount > 0) {
+      console.log(
+        '%c titleCount ',
+        'background: black; color: white',
+        titleCount
+      )
+      console.log(
+        '%c isDuplicateTitle return true ',
+        'background: red; color: white'
+      )
+      return true
+    }
+    console.log(
+      '%c isDuplicateTitle return false',
+      'background: red; color: white'
+    )
+    return false
   }
 
   const handleInputChange = (e) => {
@@ -51,9 +84,15 @@ const AddBlog = () => {
       return null
     }
 
-    const duplicateTitle: boolean = isDuplicateTitle(values.title)
+    const hasDuplicateTitle = isDuplicateTitle(values.title)
 
-    if (duplicateTitle) {
+    console.log(
+      '%c hasDuplicateTitle ',
+      'background: red; color: white',
+      hasDuplicateTitle
+    )
+
+    if (hasDuplicateTitle) {
       toast.error('Title exists, title must be unique')
       return null
     }
@@ -63,7 +102,6 @@ const AddBlog = () => {
       'background: red; color: white',
       values.title
     )
-    console.log('%c values.body ', 'background: red; color: white', values.body)
 
     setValues({ title: '', body: '', authorId: null })
 
