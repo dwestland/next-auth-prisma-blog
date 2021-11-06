@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import toast, { Toaster } from 'react-hot-toast'
-import Navbar from '../../src/components/Navbar'
-import styles from '../../styles/Form.module.css'
+import Navbar from '@/components/Navbar'
+import styles from '@/styles/Form.module.css'
 
 const AddBlog = () => {
   const [values, setValues] = useState({

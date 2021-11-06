@@ -1,7 +1,7 @@
 import React from 'react'
 import { useQuery } from 'react-query'
 import Link from 'next/link'
-import BlogItem from '../../src/components/BlogItem'
+import BlogItem from '@/components/BlogItem'
 
 interface Articles {
   articles: {}[]

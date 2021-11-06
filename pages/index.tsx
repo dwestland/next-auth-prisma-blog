@@ -1,6 +1,6 @@
 import React from 'react'
 import { signIn, signOut, useSession } from 'next-auth/client'
-import Navbar from '../src/components/Navbar'
+import Navbar from '@/components/Navbar'
 
 const IndexPage = () => {
   const [session, loading] = useSession()

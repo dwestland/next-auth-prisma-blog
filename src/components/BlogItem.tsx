@@ -2,8 +2,7 @@ import React, { FC } from 'react'
 import Link from 'next/link'
 import { FaRegHeart, FaTrashAlt, FaPencilAlt } from 'react-icons/fa'
 import Tooltip from 'rc-tooltip'
-// import { Tooltip } from '@chakra-ui/tooltip'
-import styles from '../../styles/BlogItem.module.css'
+import styles from '@/styles/BlogItem.module.css'
 import 'rc-tooltip/assets/bootstrap.css'
 
 interface BlogProps {

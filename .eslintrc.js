@@ -47,6 +47,10 @@ module.exports = {
     react: {
       version: 'latest',
     },
+    // Module import path mapping
+    'import/resolver': {
+      typescript: {},
+    },
   },
   globals: {
     JSX: true,

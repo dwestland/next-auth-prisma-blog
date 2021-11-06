@@ -1,9 +1,9 @@
 import React from 'react'
 import { useQuery } from 'react-query'
 import Link from 'next/link'
-import BlogItem from '../../src/components/BlogItem'
-import Navbar from '../../src/components/Navbar'
-import styles from '../../styles/Blogs.module.css'
+import BlogItem from '@/components/BlogItem'
+import Navbar from '@/components/Navbar'
+import styles from '@/styles/Blogs.module.css'
 
 interface Articles {
   articles: {}[]

@@ -45,7 +45,11 @@ const Details = () => {
   if (isError) {
     return <span>Error: {error?.message}</span>
   }
-
+  console.log(
+    '%c data.article ',
+    'background: blue; color: white',
+    data.article
+  )
   const { title, body, author, _count } = data.article
   const bestName = author.name ?? author.email
 
