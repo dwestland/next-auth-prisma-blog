@@ -10,6 +10,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   try {
     const articles = await prisma.blogs.findMany({
+      orderBy: {
+        updatedAt: 'desc',
+      },
       select: {
         id: true,
         body: true,
