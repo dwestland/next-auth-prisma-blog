@@ -3,6 +3,7 @@ import { useQuery } from 'react-query'
 import Link from 'next/link'
 import BlogItem from '../../src/components/BlogItem'
 import Navbar from '../../src/components/Navbar'
+import styles from '../../styles/Blogs.module.css'
 
 interface Articles {
   articles: {}[]
@@ -62,6 +63,11 @@ export default function Blogs() {
       <Link href="/blogs/add">
         <a className="btn">Add Blog</a>
       </Link>
+      <select className={styles.searchSelect}>
+        <option value="All Blogs">All Blogs</option>
+        <option value="My Blogs">My Blogs</option>
+        <option value="My Likes">My Likes</option>
+      </select>
       <div>
         {data.articles.length === 0 && <h3>No Articles</h3>}
         {data.articles.map((article: Article) => (
