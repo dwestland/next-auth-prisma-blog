@@ -1,74 +1,58 @@
 import React, { useState } from 'react'
+// import { useMutation, useQueryClient } from 'react-query'
+import { useSession } from 'next-auth/client'
 import toast, { Toaster } from 'react-hot-toast'
 import Navbar from '@/components/Navbar'
 import styles from '@/styles/Form.module.css'
 
+// TODO Add React Query
+
 const AddBlog = () => {
   const [values, setValues] = useState({
-    title: 'xxxx',
-    body: 'My body...',
-    authorId: 0,
+    title: '',
+    body: '',
   })
+  const [session] = useSession()
   const url = `${process.env.NEXT_PUBLIC_API}/blog/titleCount`
+  const url2 = `${process.env.NEXT_PUBLIC_API}/blog/add`
 
-  function fetchTitleCount(title) {
-    return fetch(url, {
+  const handleInputChange = (e) => {
+    const { name, value } = e.target
+    setValues({ ...values, [name]: value })
+  }
+
+  const postBlog = (CountObj) => {
+    const { count } = CountObj.data
+
+    if (count > 0) {
+      toast.error('Title already exists!')
+      return null
+    }
+
+    fetch(url2, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         data: {
-          title: `${title}`,
+          title: values.title,
+          body: values.body,
+          authorId: session.id,
         },
       }),
     })
       .then((res) => res.json())
       .then((resData) => {
-        console.log('fetchTitleCount return resData ', resData)
+        setValues({ title: '', body: '' })
+        toast.success('Blog saved')
         return resData
       })
-      .catch((error) => console.warn(error))
-  }
-
-  const isDuplicateTitle = (title: string) => {
-    let titleCount = 1
-
-    fetchTitleCount(title).then((data) => {
-      // you can access the result from the promise here
-
-      console.log(
-        '%c data.data.count ',
-        'background: pink; color: white',
-        data.data.count
-      )
-      titleCount = data
-    })
-
-    console.log('%c titleCount ', 'background: pink; color: white', titleCount)
-
-    if (titleCount > 0) {
-      console.log(
-        '%c titleCount ',
-        'background: black; color: white',
-        titleCount
-      )
-      console.log(
-        '%c isDuplicateTitle return true ',
-        'background: red; color: white'
-      )
-      return true
-    }
-    console.log(
-      '%c isDuplicateTitle return false',
-      'background: red; color: white'
-    )
-    return false
-  }
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target
-    setValues({ ...values, [name]: value })
+      .catch((error) => {
+        toast.error('Error posting to database')
+        console.warn(error)
+      })
+    return null
   }
 
   const handleSubmit = async (e) => {
@@ -84,26 +68,25 @@ const AddBlog = () => {
       return null
     }
 
-    const hasDuplicateTitle = isDuplicateTitle(values.title)
-
-    console.log(
-      '%c hasDuplicateTitle ',
-      'background: red; color: white',
-      hasDuplicateTitle
-    )
-
-    if (hasDuplicateTitle) {
-      toast.error('Title exists, title must be unique')
-      return null
-    }
-
-    console.log(
-      '%c values.title ',
-      'background: red; color: white',
-      values.title
-    )
-
-    setValues({ title: '', body: '', authorId: null })
+    // Check for duplicate title
+    // Get duplicate title count from server
+    // Callback function to post blog if no duplicate title
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        data: {
+          title: `${values.title}`,
+        },
+      }),
+    })
+      .then((res) => res.json())
+      .then((countObj) => {
+        postBlog(countObj)
+      })
+      .catch((error) => console.warn(error))
 
     return null
   }

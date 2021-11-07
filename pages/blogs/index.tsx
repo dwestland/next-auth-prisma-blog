@@ -15,6 +15,7 @@ interface Article {
   body: string
   title: string
   author: {
+    id: true
     name: string
     email: string
   }
@@ -24,23 +25,17 @@ interface Article {
 }
 
 export default function Blogs() {
-  const [session, loading] = useSession()
-  console.log('%c session ', 'background: red; color: white', session)
-  console.log('%c loading ', 'background: red; color: white', loading)
-
+  const [session] = useSession()
   const [blogType, setBlogType] = useState('All Blogs')
-  console.log('%c blogType ', 'background: red; color: white', blogType)
 
-  const fetchArticles = async () => {
+  const fetchAllBlogs = async () => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API}/blogs`)
-
     return res.json()
   }
 
   const { data, error, isLoading, isError } = useQuery<Articles, Error>(
-    'blogScriptName',
-    fetchArticles
-    // { staleTime: 2000 }
+    'allBlogs',
+    fetchAllBlogs
   )
 
   if (isLoading) {
@@ -57,54 +52,53 @@ export default function Blogs() {
   }
 
   const handleSelectChange = (e) => {
-    console.log(
-      '%c e.target.value ',
-      'background: red; color: white',
-      e.target.value
-    )
     setBlogType(e.target.value)
   }
 
-  return (
-    <div className="container">
-      <Navbar />
-      <h1>Blogs</h1>
-      <Link href="/blogs/add">
-        <a className="btn">Add Blog</a>
-      </Link>
-      <select
-        onChange={(e) => handleSelectChange(e)}
-        className={styles.blogSelect}
-      >
-        <option value="All Blogs">All Blogs</option>
-        <option value="My Blogs">My Blogs</option>
-        <option value="My Likes">My Likes</option>
-      </select>
-      <div>
-        {data.articles.length === 0 && <h3>No Articles</h3>}
-        {data.articles.map((article: Article) => (
-          <BlogItem key={article.title} article={article} />
-        ))}
+  const result = () => {
+    const allBlogs = data.articles.map((article: Article) => (
+      <BlogItem key={article.title} article={article} />
+    ))
+
+    switch (blogType) {
+      case 'All Blogs':
+        return allBlogs
+      case 'My Blogs':
+        console.log('%c data ', 'background: red; color: white', data)
+        console.log('%c allBlogs ', 'background: red; color: white', allBlogs)
+        return allBlogs.filter(
+          (blog) => blog.props.article.author.id === session.id
+        )
+      // TODO Add like info to Blogs API
+      case 'My Likes':
+        return allBlogs
+      default:
+        return allBlogs
+    }
+  }
+
+  if (session) {
+    return (
+      <div className="container">
+        <Navbar />
+        <h1>Blogs</h1>
+        <Link href="/blogs/add">
+          <a className="btn">Add Blog</a>
+        </Link>
+        <select
+          onChange={(e) => handleSelectChange(e)}
+          className={styles.blogSelect}
+        >
+          <option value="All Blogs">All Blogs</option>
+          <option value="My Blogs">My Blogs</option>
+          <option value="My Likes">My Likes</option>
+        </select>
+        <div>
+          {data.articles.length === 0 && <h3>No Articles</h3>}
+          {result()}
+        </div>
       </div>
-    </div>
-  )
-
-  //   switch (blogType) {
-  //     case 'All Blogs':
-  //       console.log('%c All Blogs ', 'background: blue; color: white')
-
-  //       break
-  //     case 'My Blogs':
-  //       console.log('%c My Blogs ', 'background: blue; color: white')
-  //       break
-  //     case 'My Likes':
-  //       console.log('%c My Likes ', 'background: blue; color: white')
-  //       break
-  //     default:
-  //       console.log('%c default ', 'background: blue; color: white')
-  //   }
-
-  // const res = await fetch(
-  //   `${process.env.NEXT_PUBLIC_API}/my-blogs/${session.id}`
-  // )
+    )
+  }
+  return <p className="access-denied">Access Denied</p>
 }

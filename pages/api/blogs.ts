@@ -19,6 +19,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         title: true,
         author: {
           select: {
+            id: true,
             name: true,
             email: true,
           },
