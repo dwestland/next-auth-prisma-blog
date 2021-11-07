@@ -1,7 +1,7 @@
 import React from 'react'
 import { useQuery } from 'react-query'
 import { useRouter } from 'next/router'
-import Navbar from '../../src/components/Navbar'
+import Navbar from '@/components/Navbar'
 
 interface Article {
   article: {
@@ -56,7 +56,7 @@ const Details = () => {
   return (
     <div className="container">
       <Navbar />
-      <h1>Details Page</h1>
+      <h1>Blog details</h1>
       <h2>{title}</h2>
       <p>
         By <i>{bestName}</i>
