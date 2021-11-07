@@ -3,6 +3,9 @@
 ### Get all blogs
 GET http://localhost:3000/api/blogs HTTP/1.1
 
+### My blogs
+GET http://localhost:3000/api/my-blogs/1 HTTP/1.1
+
 
 ### Search blogs
 GET http://localhost:3000/api/search HTTP/1.1
