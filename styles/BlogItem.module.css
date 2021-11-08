@@ -28,3 +28,8 @@
 .small {
   font-size: small;
 }
+
+.iconButton {
+  background: none;
+  border: none;
+}
