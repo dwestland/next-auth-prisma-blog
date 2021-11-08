@@ -23,6 +23,22 @@ interface BlogProps {
 const BlogItem: FC<BlogProps> = ({ article }): JSX.Element => {
   const { id, title, author, _count } = article
   const bestName = author.name ?? author.email
+  const url = `${process.env.NEXT_PUBLIC_API}/blog/delete`
+
+  const handleDelete = () => {
+    console.log('%c handleDelete ', 'background: red; color: white')
+    fetch(url, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        data: {
+          id,
+        },
+      }),
+    })
+  }
 
   return (
     <div className={styles.blogItem}>
@@ -42,21 +58,29 @@ const BlogItem: FC<BlogProps> = ({ article }): JSX.Element => {
               <FaPencilAlt />
             </a>
           </Tooltip>
-          &nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;
+          {/* Delete Button */}
           <Tooltip
             placement="top"
             trigger={['hover']}
             overlay={<span>Delete</span>}
           >
-            <a className={styles.icon}>
-              <FaTrashAlt />
-            </a>
+            <button
+              type="button"
+              className={styles.iconButton}
+              onClick={handleDelete}
+            >
+              <a className={styles.icon}>
+                <FaTrashAlt />
+              </a>
+            </button>
           </Tooltip>
-          &nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;
+          {/* Favorite Button */}
           <Tooltip
             placement="top"
             trigger={['hover']}
-            overlay={<span>Like</span>}
+            overlay={<span>Favorite</span>}
           >
             <a className={styles.icon}>
               <FaRegHeart />
