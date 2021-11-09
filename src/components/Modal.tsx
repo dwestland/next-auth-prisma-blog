@@ -17,7 +17,11 @@ export default function Modal({ show, onClose, children, title }) {
     <div className={styles.overlay}>
       <div className={styles.modal}>
         <div className={styles.header}>
-          <button type="button" onClick={handleClose}>
+          <button
+            className={styles.xButton}
+            type="button"
+            onClick={handleClose}
+          >
             <a>
               <FaTimes />
             </a>

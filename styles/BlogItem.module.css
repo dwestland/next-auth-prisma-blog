@@ -16,8 +16,6 @@
 .icons {
   display: flex;
   text-align: right;
-  /* 
-  width: 50px; */
 }
 
 .icon {
@@ -32,4 +30,21 @@
 .iconButton {
   background: none;
   border: none;
+}
+
+.deleteModal {
+  text-align: center;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px auto 20px;
+  width: 200px;
+}
+
+.cancelButton {
+  background: none;
+  border: 1px solid #000;
+  color: #000;
 }
