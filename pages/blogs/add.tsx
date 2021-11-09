@@ -13,8 +13,8 @@ const AddBlog = () => {
     body: '',
   })
   const [session] = useSession()
-  const url = `${process.env.NEXT_PUBLIC_API}/blog/titleCount`
-  const url2 = `${process.env.NEXT_PUBLIC_API}/blog/add`
+  const urlCount = `${process.env.NEXT_PUBLIC_API}/blog/titleCount`
+  const urlAdd = `${process.env.NEXT_PUBLIC_API}/blog/add`
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
@@ -29,7 +29,7 @@ const AddBlog = () => {
       return null
     }
 
-    fetch(url2, {
+    fetch(urlAdd, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -71,7 +71,7 @@ const AddBlog = () => {
     // Check for duplicate title
     // Get duplicate title count from server
     // Callback function to post blog if no duplicate title
-    fetch(url, {
+    fetch(urlCount, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
