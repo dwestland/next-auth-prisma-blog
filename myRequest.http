@@ -34,6 +34,19 @@ Content-Type: application/json
     }
 }
 
+### Update blog
+POST http://localhost:3000/api/blog/update HTTP/1.1
+Content-Type: application/json
+
+{
+  "data":
+    {
+      "title": "xxxxz",
+      "body": "xx oo",
+      "authorId": 48
+    }
+}
+
 
 ### Check if title exists
 GET http://localhost:3000/api/blog/titleCount HTTP/1.1
