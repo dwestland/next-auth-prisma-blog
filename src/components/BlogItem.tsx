@@ -2,9 +2,10 @@ import React, { FC, useState } from 'react'
 import Link from 'next/link'
 import { FaRegHeart, FaTrashAlt, FaPencilAlt } from 'react-icons/fa'
 import Tooltip from 'rc-tooltip'
-import Modal from '@/components/Modal'
 import styles from '@/styles/BlogItem.module.css'
 import 'rc-tooltip/assets/bootstrap.css'
+import DeleteModal from '@/components/DeleteModal'
+import EditModal from '@/components/EditModal'
 
 interface Blog {
   article: {
@@ -22,32 +23,19 @@ interface Blog {
 }
 
 const BlogItem: FC<Blog> = ({ article }): JSX.Element => {
-  // const [showModal, setShowModal] = useState(false)
-  const [showDeleteModal, setShowDeleteModal] = useState(false)
-  const [showEditModal, setShowEditModal] = useState(false)
+  const [showDeleteModal, setShowDeleteModal] = useState<boolean>(false)
+  const [showEditModal, setShowEditModal] = useState<boolean>(false)
 
-  const { id, title, author, _count } = article
+  const { id, title, body, author, _count } = article
   const bestName = author.name ?? author.email
-  const url = `${process.env.NEXT_PUBLIC_API}/blog/delete`
+  // const url = `${process.env.NEXT_PUBLIC_API}/blog/delete`
 
   const openDeleteModal = () => {
     setShowDeleteModal(true)
   }
 
-  const handleDelete = () => {
-    fetch(url, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        data: {
-          id,
-        },
-      }),
-    })
-
-    setShowDeleteModal(false)
+  const openEditModal = () => {
+    setShowEditModal(true)
   }
 
   return (
@@ -59,15 +47,21 @@ const BlogItem: FC<Blog> = ({ article }): JSX.Element => {
         <div className={styles.icons}>
           ID:{id}
           &nbsp;&nbsp;&nbsp;
-          {/* Edit Link */}
+          {/* Edit Button */}
           <Tooltip
             placement="top"
             trigger={['hover']}
             overlay={<span>Edit</span>}
           >
-            <a className={styles.icon}>
-              <FaPencilAlt />
-            </a>
+            <button
+              type="button"
+              className={styles.iconButton}
+              onClick={openEditModal}
+            >
+              <a className={styles.icon}>
+                <FaPencilAlt />
+              </a>
+            </button>
           </Tooltip>
           &nbsp;&nbsp;
           {/* Delete Button */}
@@ -107,50 +101,21 @@ const BlogItem: FC<Blog> = ({ article }): JSX.Element => {
           <a>Blog detail</a>
         </Link>
       </div>
-      {showDeleteModal ? (
-        <Modal
-          show="true"
-          title={null}
-          onClose={() => setShowDeleteModal(false)}
-        >
-          <div className={styles.deleteModal}>
-            <h2>Are you sure you want to delete</h2>
-            <h3>&quot;{title}&quot;&nbsp;&nbsp;?</h3>
-            <div className={styles.buttonContainer}>
-              <button className="btn" type="button" onClick={handleDelete}>
-                Delete
-              </button>
-              <button
-                className={`btn ${styles.cancelButton}`}
-                type="button"
-                onClick={() => setShowDeleteModal(false)}
-              >
-                Cancel
-              </button>
-            </div>
-          </div>
-        </Modal>
-      ) : null}
-      {showEditModal ? (
-        <Modal show="true" title={null} onClose={() => setShowEditModal(false)}>
-          <div className={styles.deleteModal}>
-            <h2>Are you sure you want to delete</h2>
-            <h3>&quot;{title}&quot;&nbsp;&nbsp;?</h3>
-            <div className={styles.buttonContainer}>
-              <button className="btn" type="button" onClick={handleDelete}>
-                Delete
-              </button>
-              <button
-                className={`btn ${styles.cancelButton}`}
-                type="button"
-                onClick={() => setShowEditModal(false)}
-              >
-                Cancel
-              </button>
-            </div>
-          </div>
-        </Modal>
-      ) : null}
+      {showDeleteModal && (
+        <DeleteModal
+          id={id}
+          setShowDeleteModal={setShowDeleteModal}
+          title={title}
+        />
+      )}
+      {showEditModal && (
+        <EditModal
+          id={id}
+          title={title}
+          body={body}
+          setShowEditModal={setShowEditModal}
+        />
+      )}
     </div>
   )
 }
