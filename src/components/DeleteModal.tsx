@@ -1,9 +1,5 @@
 import React, { FC } from 'react'
-// import Link from 'next/link'
-// import { FaRegHeart, FaTrashAlt, FaPencilAlt } from 'react-icons/fa'
-// import Tooltip from 'rc-tooltip'
 import Modal from '@/components/Modal'
-// import styles from '@/styles/BlogItem.module.css'
 
 interface ModalProps {
   id: number
@@ -17,9 +13,6 @@ const DeleteModal: FC<ModalProps> = ({
   setShowDeleteModal,
 }): JSX.Element => {
   const url = `${process.env.NEXT_PUBLIC_API}/blog/delete`
-  // const DeleteModal = (boom) => {
-  // const { id, title, setShowDeleteModal } = boom
-  console.log('%c bam ', 'background: red; color: white')
 
   const handleDelete = () => {
     fetch(url, {
