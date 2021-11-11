@@ -3,7 +3,7 @@ import React, { FC } from 'react'
 // import { FaRegHeart, FaTrashAlt, FaPencilAlt } from 'react-icons/fa'
 // import Tooltip from 'rc-tooltip'
 import Modal from '@/components/Modal'
-import styles from '@/styles/BlogItem.module.css'
+// import styles from '@/styles/BlogItem.module.css'
 
 interface ModalProps {
   id: number
@@ -40,15 +40,15 @@ const DeleteModal: FC<ModalProps> = ({
   return (
     <div>
       <Modal show="true" title={null} onClose={() => setShowDeleteModal(false)}>
-        <div className={styles.deleteModal}>
+        <div className="cancelModal">
           <h2>Are you sure you want to delete</h2>
           <h3>&quot;{title}&quot;&nbsp;&nbsp;?</h3>
-          <div className={styles.buttonContainer}>
+          <div className="buttonContainer">
             <button className="btn" type="button" onClick={handleDelete}>
               Delete
             </button>
             <button
-              className={`btn ${styles.cancelButton}`}
+              className="btn ghostButton"
               type="button"
               onClick={() => setShowDeleteModal(false)}
             >

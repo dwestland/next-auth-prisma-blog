@@ -82,7 +82,20 @@ const DeleteModal: FC<ModalProps> = ({
                 </label>
               </div>
             </div>
-            <input type="submit" value="Update Blog" className="btn" />
+
+            <div className="buttonContainer">
+              <button type="submit" className="btn">
+                Update
+              </button>
+              <button
+                className="btn ghostButton"
+                type="button"
+                onClick={() => setShowEditModal(false)}
+              >
+                Cancel
+              </button>
+            </div>
+            {/* <input type="submit" value="Update Blog" className="btn" /> */}
           </form>
         </div>
       </Modal>

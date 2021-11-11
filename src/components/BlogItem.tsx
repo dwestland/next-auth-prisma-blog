@@ -45,8 +45,6 @@ const BlogItem: FC<Blog> = ({ article }): JSX.Element => {
           <strong>{title}</strong>
         </span>
         <div className={styles.icons}>
-          ID:{id}
-          &nbsp;&nbsp;&nbsp;
           {/* Edit Button */}
           <Tooltip
             placement="top"
@@ -63,7 +61,7 @@ const BlogItem: FC<Blog> = ({ article }): JSX.Element => {
               </a>
             </button>
           </Tooltip>
-          &nbsp;&nbsp;
+          &nbsp;
           {/* Delete Button */}
           <Tooltip
             placement="top"

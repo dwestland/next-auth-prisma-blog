@@ -59,3 +59,21 @@ a {
   text-align: center;
   width: 125px;
 }
+
+/* Modal buttons */
+.cancelModal {
+  text-align: center;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px auto 20px;
+  width: 200px;
+}
+
+.ghostButton {
+  background: none;
+  border: 1px solid #000;
+  color: #000;
+}
