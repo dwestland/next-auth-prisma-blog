@@ -31,3 +31,12 @@
   background: none;
   border: none;
 }
+
+.body {
+  margin: 0;
+  padding: 5px 10px;
+}
+
+.anchorClass {
+  font-size: smaller;
+}

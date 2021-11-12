@@ -2,6 +2,7 @@ import React, { FC, useState } from 'react'
 import Link from 'next/link'
 import { FaRegHeart, FaTrashAlt, FaPencilAlt } from 'react-icons/fa'
 import Tooltip from 'rc-tooltip'
+import ShowMoreText from 'react-show-more-text'
 import styles from '@/styles/BlogItem.module.css'
 import 'rc-tooltip/assets/bootstrap.css'
 import DeleteModal from '@/components/DeleteModal'
@@ -98,6 +99,17 @@ const BlogItem: FC<Blog> = ({ article }): JSX.Element => {
         <Link href={`/detail/${id}`}>
           <a>Blog detail</a>
         </Link>
+      </div>
+      <div className={styles.body}>
+        <ShowMoreText
+          lines={2}
+          more="show more"
+          less="show less"
+          anchorClass={styles.anchorClass}
+          truncatedEndingComponent="... "
+        >
+          <p>{body}</p>
+        </ShowMoreText>
       </div>
       {showDeleteModal && (
         <DeleteModal
