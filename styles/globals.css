@@ -37,27 +37,6 @@ a:hover {
   padding: 0px 20px 30px;
 }
 
-.btn {
-  background: #000;
-  border-radius: 5px;
-  border: 0;
-  color: #fff;
-  cursor: pointer;
-  display: inline-block;
-  padding: 10px 20px;
-  text-decoration: none;
-}
-
-button a {
-  text-decoration: none;
-}
-
-.access-denied {
-  text-align: center;
-  margin-top: 45 vh;
-  font-size: 18px;
-}
-
 .big-select {
   -moz-appearance: none;
   -webkit-appearance: none;
@@ -74,18 +53,43 @@ button a {
   width: 125px;
 }
 
+.btn {
+  background: #000;
+  border-radius: 5px;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+
+button a {
+  text-decoration: none;
+}
+
+.button-as-link {
+  background: none;
+  border: 1px solid #000;
+  border: none;
+  color: royalblue;
+  cursor: pointer;
+  display: contents;
+  margin: none;
+  padding: none;
+  text-decoration: underline;
+}
+
 /* Modal buttons */
 .cancelModal {
   text-align: center;
 }
-
 .buttonContainer {
   display: flex;
   justify-content: space-between;
   margin: 30px auto 20px;
   width: 200px;
 }
-
 .ghostButton {
   background: none;
   border: 1px solid #000;
