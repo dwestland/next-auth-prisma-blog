@@ -40,3 +40,7 @@
 .anchorClass {
   font-size: smaller;
 }
+
+.liked {
+  color: crimson;
+}

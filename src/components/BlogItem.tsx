@@ -1,6 +1,7 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
+import { useSession } from 'next-auth/client'
 import Link from 'next/link'
-import { FaRegHeart, FaTrashAlt, FaPencilAlt } from 'react-icons/fa'
+import { FaHeart, FaRegHeart, FaTrashAlt, FaPencilAlt } from 'react-icons/fa'
 import Tooltip from 'rc-tooltip'
 import ShowMoreText from 'react-show-more-text'
 import styles from '@/styles/BlogItem.module.css'
@@ -20,16 +21,30 @@ interface Blog {
     _count: {
       blogLike: number
     }
+    blogLike: any
   }
 }
 
 const BlogItem: FC<Blog> = ({ article }): JSX.Element => {
+  const [session] = useSession()
   const [showDeleteModal, setShowDeleteModal] = useState<boolean>(false)
   const [showEditModal, setShowEditModal] = useState<boolean>(false)
+  const [isLikeByUser, setIsLikeByUser] = useState<boolean>(false)
 
-  const { id, title, body, author, _count } = article
+  const { id, title, body, author, _count, blogLike } = article
   const bestName = author.name ?? author.email
-  // const url = `${process.env.NEXT_PUBLIC_API}/blog/delete`
+
+  useEffect(() => {
+    console.log('%c blogLike ', 'background: green; color: white', blogLike)
+    console.log('blogLike')
+    if (blogLike.length > 0) {
+      setIsLikeByUser(true)
+    } else {
+      setIsLikeByUser(false)
+    }
+  }, [blogLike])
+
+  console.log('%c blogLike ', 'background: red; color: white', blogLike)
 
   const openDeleteModal = () => {
     setShowDeleteModal(true)
@@ -37,6 +52,19 @@ const BlogItem: FC<Blog> = ({ article }): JSX.Element => {
 
   const openEditModal = () => {
     setShowEditModal(true)
+  }
+
+  const toggleLike = () => {
+    console.log('%c Like ', 'background: red; color: white')
+    console.log('%c user id ', 'background: red; color: white', session.id)
+
+    // The initial response should include user like for each blog
+
+    // Check if user has like this blog
+
+    // If liked, delete like
+
+    // If not liked, add like
   }
 
   return (
@@ -80,15 +108,25 @@ const BlogItem: FC<Blog> = ({ article }): JSX.Element => {
             </button>
           </Tooltip>
           &nbsp;&nbsp;
-          {/* Favorite Button */}
+          {/* Like Button */}
           <Tooltip
             placement="top"
             trigger={['hover']}
-            overlay={<span>Favorite</span>}
+            overlay={<span>Like</span>}
           >
-            <a className={styles.icon}>
-              <FaRegHeart />
-            </a>
+            <button
+              type="button"
+              className={styles.iconButton}
+              onClick={toggleLike}
+            >
+              <a className={styles.icon}>
+                {isLikeByUser ? (
+                  <FaHeart className={styles.liked} />
+                ) : (
+                  <FaRegHeart />
+                )}
+              </a>
+            </button>
           </Tooltip>
           &nbsp;
           {_count.blogLike}

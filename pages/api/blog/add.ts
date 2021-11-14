@@ -10,11 +10,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   const { title, body, authorId } = req.body.data
 
-  console.log('%c req.body ', 'background: darkblue; color: white', req.body)
-  console.log('%c title ', 'background: darkblue; color: white', title)
-  console.log('%c body ', 'background: darkblue; color: white', body)
-  console.log('%c authorId ', 'background: darkblue; color: white', authorId)
-
   try {
     await prisma.blogs.create({
       data: {
@@ -24,9 +19,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       },
     })
 
-    res.status(200).json({ message: 'eagle has landed' })
+    res.status(201).json({ message: 'Blog saved' })
   } catch (err) {
-    res.status(400).json({ message: 'Something went wrong' })
+    res.status(500).json({ message: 'Sorry, unable to handle request' })
   }
   return null
 }

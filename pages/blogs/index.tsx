@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useQuery } from 'react-query'
 import { useSession } from 'next-auth/client'
 import Link from 'next/link'
+// import toast, { Toaster } from 'react-hot-toast'
 import BlogItem from '@/components/BlogItem'
 import Navbar from '@/components/Navbar'
 import styles from '@/styles/Blogs.module.css'
@@ -22,14 +23,31 @@ interface Article {
   _count: {
     blogLike: number
   }
+  blogLike: []
 }
 
 export default function Blogs() {
   const [session] = useSession()
   const [blogType, setBlogType] = useState('All Blogs')
+  const url = `${process.env.NEXT_PUBLIC_API}/blogs`
+  /// //////////////////////////////////////////////////////////////////
+  // const fetchAllBlogs = async () => {
+  //   const res = await fetch(`${process.env.NEXT_PUBLIC_API}/blogs`)
+  //   return res.json()
+  // }
 
   const fetchAllBlogs = async () => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API}/blogs`)
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        data: {
+          user: 4,
+        },
+      }),
+    })
     return res.json()
   }
 
@@ -100,5 +118,5 @@ export default function Blogs() {
       </div>
     )
   }
-  return <p className="access-denied">Access Denied</p>
+  return <p>Access Denied</p>
 }

@@ -42,6 +42,14 @@ const IndexPage = () => {
         <button type="button" className="btn" onClick={() => signIn()}>
           Sign in
         </button>
+        <p>Or</p>
+        <button
+          type="button"
+          className="btn button-as-link"
+          onClick={() => signIn()}
+        >
+          Sign up
+        </button>
       </div>
     </div>
   )
