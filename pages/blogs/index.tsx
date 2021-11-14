@@ -2,13 +2,14 @@ import React, { useState } from 'react'
 import { useQuery } from 'react-query'
 import { useSession } from 'next-auth/client'
 import Link from 'next/link'
-// import toast, { Toaster } from 'react-hot-toast'
+import toast, { Toaster } from 'react-hot-toast'
 import BlogItem from '@/components/BlogItem'
 import Navbar from '@/components/Navbar'
 import styles from '@/styles/Blogs.module.css'
 
 interface Articles {
   articles: {}[]
+  userLikingOwnError: () => void
 }
 
 interface Article {
@@ -16,7 +17,7 @@ interface Article {
   body: string
   title: string
   author: {
-    id: true
+    id: number
     name: string
     email: string
   }
@@ -73,9 +74,17 @@ export default function Blogs() {
     setBlogType(e.target.value)
   }
 
+  const userLikingOwnError = () => {
+    toast.error('You cannot like your own blog!')
+  }
+
   const result = () => {
     const allBlogs = data.articles.map((article: Article) => (
-      <BlogItem key={article.title} article={article} />
+      <BlogItem
+        key={article.title}
+        article={article}
+        userLikingOwnError={userLikingOwnError}
+      />
     ))
 
     switch (blogType) {
@@ -98,6 +107,7 @@ export default function Blogs() {
   if (session) {
     return (
       <div className="container">
+        <Toaster />
         <Navbar />
         <h1>Blogs</h1>
         <Link href="/blogs/add">

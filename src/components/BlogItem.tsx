@@ -10,6 +10,7 @@ import DeleteModal from '@/components/DeleteModal'
 import EditModal from '@/components/EditModal'
 
 interface Blog {
+  userLikingOwnError: () => void
   article: {
     id: number
     body: string
@@ -17,6 +18,7 @@ interface Blog {
     author: {
       name: string
       email: string
+      id: number
     }
     _count: {
       blogLike: number
@@ -25,11 +27,12 @@ interface Blog {
   }
 }
 
-const BlogItem: FC<Blog> = ({ article }): JSX.Element => {
+const BlogItem: FC<Blog> = ({ article, userLikingOwnError }): JSX.Element => {
   const [session] = useSession()
   const [showDeleteModal, setShowDeleteModal] = useState<boolean>(false)
   const [showEditModal, setShowEditModal] = useState<boolean>(false)
   const [isLikeByUser, setIsLikeByUser] = useState<boolean>(false)
+  // const [isUserLikingOwn, setIsUserLikingOwn] = useState<boolean>(false)
 
   const { id, title, body, author, _count, blogLike } = article
   const bestName = author.name ?? author.email
@@ -44,8 +47,6 @@ const BlogItem: FC<Blog> = ({ article }): JSX.Element => {
     }
   }, [blogLike])
 
-  console.log('%c blogLike ', 'background: red; color: white', blogLike)
-
   const openDeleteModal = () => {
     setShowDeleteModal(true)
   }
@@ -54,17 +55,50 @@ const BlogItem: FC<Blog> = ({ article }): JSX.Element => {
     setShowEditModal(true)
   }
 
+  const createLike = async () => {
+    console.log('%c id ', 'background: red; color: white', id)
+    console.log('%c session.id ', 'background: red; color: white', session.id)
+
+    // POST {{baseurl}}/like/add HTTP/1.1
+    // Content-Type: application/json
+
+    // {
+    //   "data":
+    //     {
+    //       "userId": 4,
+    //       "blogId": 3
+    //     }
+    // }
+  }
+
   const toggleLike = () => {
-    console.log('%c Like ', 'background: red; color: white')
-    console.log('%c user id ', 'background: red; color: white', session.id)
+    if (author.id === session.id) {
+      console.log(
+        '%c You cant like your own blog ',
+        'background: green; color: white'
+      )
 
-    // The initial response should include user like for each blog
+      console.log(
+        '%c userLikingOwnError ',
+        'background: purple; color: white',
+        userLikingOwnError
+      )
+      userLikingOwnError()
+    }
 
-    // Check if user has like this blog
+    if (isLikeByUser) {
+      // Delete like
+      console.log(
+        '%c isLikeByUser ',
+        'background: red; color: white',
+        isLikeByUser
+      )
+    } else {
+      createLike()
+      // Add like
+    }
 
-    // If liked, delete like
-
-    // If not liked, add like
+    return null
   }
 
   return (
@@ -74,6 +108,8 @@ const BlogItem: FC<Blog> = ({ article }): JSX.Element => {
           <strong>{title}</strong>
         </span>
         <div className={styles.icons}>
+          {/*  TODO - Remove ID */}
+          {id}
           {/* Edit Button */}
           <Tooltip
             placement="top"
