@@ -68,9 +68,15 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
               blogLike: true,
             },
           },
-          // include: {
-          //   blogLike: {}
-          //   }
+
+          blogLike: {
+            where: {
+              userId: req.body.data.user,
+            },
+            select: {
+              userId: true,
+            },
+          },
         },
       })
       res.status(200).json({ articles })
