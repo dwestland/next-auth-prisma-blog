@@ -36,6 +36,8 @@ const BlogItem: FC<Blog> = ({ article, userLikingOwnError }): JSX.Element => {
 
   const { id, title, body, author, _count, blogLike } = article
   const bestName = author.name ?? author.email
+  const url = `${process.env.NEXT_PUBLIC_API}/like/add`
+  const deleteUrl = `${process.env.NEXT_PUBLIC_API}/like/delete`
 
   useEffect(() => {
     console.log('%c blogLike ', 'background: green; color: white', blogLike)
@@ -56,38 +58,47 @@ const BlogItem: FC<Blog> = ({ article, userLikingOwnError }): JSX.Element => {
   }
 
   const createLike = async () => {
-    console.log('%c id ', 'background: red; color: white', id)
-    console.log('%c session.id ', 'background: red; color: white', session.id)
+    console.log('%c createLike ', 'background: red; color: white')
 
-    // POST {{baseurl}}/like/add HTTP/1.1
-    // Content-Type: application/json
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        data: {
+          userId: session.id,
+          blogId: id,
+        },
+      }),
+    }).catch((error) => console.warn(error))
+  }
 
-    // {
-    //   "data":
-    //     {
-    //       "userId": 4,
-    //       "blogId": 3
-    //     }
-    // }
+  const deleteLike = async () => {
+    console.log('%c deleteLike ', 'background: red; color: white')
+    fetch(deleteUrl, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        data: {
+          blogId: id,
+          // User ID
+        },
+      }),
+    }).catch((error) => console.warn(error))
   }
 
   const toggleLike = () => {
     if (author.id === session.id) {
-      console.log(
-        '%c You cant like your own blog ',
-        'background: green; color: white'
-      )
-
-      console.log(
-        '%c userLikingOwnError ',
-        'background: purple; color: white',
-        userLikingOwnError
-      )
       userLikingOwnError()
+      return null
     }
 
     if (isLikeByUser) {
       // Delete like
+      deleteLike()
       console.log(
         '%c isLikeByUser ',
         'background: red; color: white',
@@ -95,7 +106,6 @@ const BlogItem: FC<Blog> = ({ article, userLikingOwnError }): JSX.Element => {
       )
     } else {
       createLike()
-      // Add like
     }
 
     return null
