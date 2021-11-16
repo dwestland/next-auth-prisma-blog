@@ -37,7 +37,7 @@ const DeleteModal: FC<ModalProps> = ({
         data: {
           id,
           title: values.title,
-          values: values.body,
+          body: values.body,
         },
       }),
     })
