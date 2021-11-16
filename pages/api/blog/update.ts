@@ -21,9 +21,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       },
     })
 
-    res.status(200).json({ message: 'Blog has been updated' })
+    res.status(204).json({ message: 'Blog has been updated' })
   } catch (err) {
-    res.status(400).json({ message: 'Blog did not update' })
+    res.status(500).json({ message: 'Sorry, unable to handle request' })
   }
   return null
 }

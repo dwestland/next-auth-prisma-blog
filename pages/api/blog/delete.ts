@@ -20,9 +20,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       },
     })
 
-    res.status(200).json({ message: 'eagle has landed' })
+    res.status(204).json({ message: 'Blog deleted' })
   } catch (err) {
-    res.status(400).json({ message: 'Something went wrong' })
+    res.status(500).json({ message: 'Sorry, unable to handle request' })
   }
   return null
 }
