@@ -32,7 +32,6 @@ const BlogItem: FC<Blog> = ({ article, userLikingOwnError }): JSX.Element => {
   const [showDeleteModal, setShowDeleteModal] = useState<boolean>(false)
   const [showEditModal, setShowEditModal] = useState<boolean>(false)
   const [isLikeByUser, setIsLikeByUser] = useState<boolean>(false)
-  // const [isUserLikingOwn, setIsUserLikingOwn] = useState<boolean>(false)
 
   const { id, title, body, author, _count, blogLike } = article
   const bestName = author.name ?? author.email
@@ -83,8 +82,8 @@ const BlogItem: FC<Blog> = ({ article, userLikingOwnError }): JSX.Element => {
       },
       body: JSON.stringify({
         data: {
+          userId: session.id,
           blogId: id,
-          // User ID
         },
       }),
     }).catch((error) => console.warn(error))
