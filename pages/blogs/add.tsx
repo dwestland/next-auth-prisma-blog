@@ -95,7 +95,14 @@ const AddBlog = () => {
     <div className={`${styles.formPage} container`}>
       <Navbar />
       <h1>Add Blog</h1>
-      <Toaster />
+      <Toaster
+        toastOptions={{
+          style: {
+            height: '60px',
+            border: '1px solid lightgray',
+          },
+        }}
+      />
       <form onSubmit={handleSubmit} className={styles.form}>
         <div>
           <div className={styles.section}>

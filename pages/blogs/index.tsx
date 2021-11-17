@@ -107,7 +107,14 @@ export default function Blogs() {
   if (session) {
     return (
       <div className="container">
-        <Toaster />
+        <Toaster
+          toastOptions={{
+            style: {
+              height: '60px',
+              border: '1px solid lightgray',
+            },
+          }}
+        />
         <Navbar />
         <h1>Blogs</h1>
         <Link href="/blogs/add">
