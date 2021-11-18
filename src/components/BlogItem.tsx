@@ -135,7 +135,7 @@ const BlogItem: FC<Blog> = ({ article, userLikingOwnError }): JSX.Element => {
               </a>
             </button>
           </Tooltip>
-          &nbsp;
+          &nbsp;&nbsp;
           {/* Delete Button */}
           <Tooltip
             placement="top"
@@ -173,7 +173,6 @@ const BlogItem: FC<Blog> = ({ article, userLikingOwnError }): JSX.Element => {
               </a>
             </button>
           </Tooltip>
-          &nbsp;
           {_count.blogLike}
         </div>
       </div>
@@ -185,7 +184,7 @@ const BlogItem: FC<Blog> = ({ article, userLikingOwnError }): JSX.Element => {
       </div>
       <div className={styles.body}>
         <ShowMoreText
-          lines={2}
+          lines={3}
           more="show more"
           less="show less"
           anchorClass={styles.anchorClass}

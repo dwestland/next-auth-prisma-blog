@@ -1,5 +1,6 @@
 .blogItem {
-  border: 1px solid black;
+  border: 1px solid lightgray;
+  border-radius: 5px;
   margin: 20px auto;
   max-width: 650px;
   padding: 5px 0;
