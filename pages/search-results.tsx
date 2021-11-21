@@ -1,68 +1,79 @@
 import React from 'react'
-// import { useQuery } from 'react-query'
-// import { useRouter } from 'next/router'
+import { useQuery } from 'react-query'
+import { useRouter } from 'next/router'
+import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 
-// interface Article {
-//   article: {
-//     id: number
-//     body: string
-//     title: string
-//     author: {
-//       name: string
-//       email: string
-//     }
-//     _count: {
-//       blogLike: number
-//     }
-//   }
-// }
+interface Search {
+  articles: []
+}
 
-const searchResults = () => (
-  // const router = useRouter()
-  // const { id } = router.query
+interface SearchResults {
+  id: number
+  body: string
+  title: string
+}
 
-  // const fetchArticle = async () => {
-  //   const res = await fetch(`${process.env.NEXT_PUBLIC_API}/blog/${+id}`)
-  //   return res.json()
-  // }
+const searchResults = () => {
+  const url = `${process.env.NEXT_PUBLIC_API}/blog/search`
+  const router = useRouter()
+  const searchTerm = router.query.term
 
-  // const { data, error, isLoading, isError } = useQuery<Article, Error>(
-  //   'article',
-  //   fetchArticle
-  //   // { staleTime: 2000 }
-  // )
-  // console.log('%c data ', 'background: red; color: white', data)
-  // if (isLoading) {
-  //   return (
-  //     <div className="container">
-  //       <Navbar />
-  //       <span>Loading...</span>
-  //     </div>
-  //   )
-  // }
+  const fetchSearchResults = async () => {
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        search: {
+          term: searchTerm,
+        },
+      }),
+    })
+    return res.json()
+  }
 
-  // if (isError) {
-  //   return <span>Error: {error?.message}</span>
-  // }
-  // console.log(
-  //   '%c data.article ',
-  //   'background: blue; color: white',
-  //   data.article
-  // )
-  // const { title, body, author, _count } = data.article
-  // const bestName = author.name ?? author.email
+  const { data, error, isLoading, isError } = useQuery<Search, Error>(
+    'searchResults',
+    fetchSearchResults
+  )
 
-  <div className="container">
-    <Navbar />
-    <h1>Search Results</h1>
-    {/* <h2>{title}</h2>
+  if (isLoading) {
+    return (
+      <div className="container">
+        <Navbar />
+        <span>Loading...</span>
+      </div>
+    )
+  }
+
+  if (isError) {
+    return <span>Error: {error?.message}</span>
+  }
+
+  const result = () => {
+    console.log('%c i am results ', 'background: red; color: white')
+    const results = data.articles.map((article: SearchResults) => (
       <p>
-        By <i>{bestName}</i>
+        <strong>{article.title}</strong>
+        &nbsp;-&nbsp;
+        <Link href={`/detail/${article.id}`}>
+          <a>Blog detail</a>
+        </Link>
       </p>
-      <p>Likes {_count.blogLike}</p>
-      <p>{body}</p> */}
-  </div>
-)
+    ))
+    return results
+  }
+
+  return (
+    <div className="container">
+      <Navbar />
+      <h1>Search Results for {router.query.term}</h1>
+
+      {result()}
+    </div>
+  )
+}
 
 export default searchResults

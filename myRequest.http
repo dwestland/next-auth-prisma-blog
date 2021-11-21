@@ -39,8 +39,6 @@ Content-Type: application/json
 }
 
 
-
-
 ### Get blog by id
 GET {{baseurl}}/blog/7 HTTP/1.1
 

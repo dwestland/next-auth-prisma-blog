@@ -7,7 +7,7 @@ const Search = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    router.push(`/pages/search-results?term=${term}`)
+    router.push(`/search-results?term=${term}`)
     setTerm('')
   }
 
