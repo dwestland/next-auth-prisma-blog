@@ -1,10 +1,13 @@
 import React from 'react'
 import { useQuery } from 'react-query'
 import Link from 'next/link'
+import toast, { Toaster } from 'react-hot-toast'
 import BlogItem from '@/components/BlogItem'
+import Navbar from '@/components/Navbar'
 
 interface Articles {
   articles: {}[]
+  userLikingOwnError: () => void
 }
 
 interface Article {
@@ -12,12 +15,14 @@ interface Article {
   body: string
   title: string
   author: {
+    id: number
     name: string
     email: string
   }
   _count: {
     blogLike: number
   }
+  blogLike: []
 }
 
 export default function Blog() {
@@ -34,7 +39,12 @@ export default function Blog() {
   )
 
   if (isLoading) {
-    return <span>Loading...</span>
+    return (
+      <div className="container">
+        <Navbar />
+        <span>Loading...</span>
+      </div>
+    )
   }
 
   if (isError) {
@@ -49,8 +59,22 @@ export default function Blog() {
   //   'background: purple; color: white',
   //   data.articles
   // )
+
+  const userLikingOwnError = () => {
+    toast.error('You cannot like your own blog!')
+  }
+
   return (
     <div className="container">
+      <Toaster
+        toastOptions={{
+          style: {
+            height: '60px',
+            border: '1px solid lightgray',
+          },
+        }}
+      />
+      <Navbar />
       <h1>Blogs</h1>
       <Link href="/blogs/add">
         <a className="btn">Add Blog</a>
@@ -58,7 +82,11 @@ export default function Blog() {
       <div>
         {data.articles.length === 0 && <h3>No Articles</h3>}
         {data.articles.map((article: Article) => (
-          <BlogItem key={article.title} article={article} />
+          <BlogItem
+            key={article.title}
+            article={article}
+            userLikingOwnError={userLikingOwnError}
+          />
         ))}
       </div>
     </div>
