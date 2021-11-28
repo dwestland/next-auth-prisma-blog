@@ -8,6 +8,14 @@ A blog site with authentication
 npm run dev
 ```
 
+### Github Actions:
+
+start runner on server:
+
+```
+~/actions-runner/run.sh
+```
+
 ## User Story
 
 - User can login using GitHub or Google OAuth or passwordless login
