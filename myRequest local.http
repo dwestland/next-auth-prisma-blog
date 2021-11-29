@@ -1,5 +1,5 @@
 # Uses VS Code Rest Client extension
-@baseurl = https://next-auth-prisma-blog.westland.net/api
+@baseurl = http://localhost:3000/api
 
 ### Get all blogs
 GET {{baseurl}}/blogs HTTP/1.1
