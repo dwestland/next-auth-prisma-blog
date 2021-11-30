@@ -6,9 +6,9 @@ const IndexPage = () => {
   const [session, loading] = useSession()
 
   console.log(
-    '%c process.env.GITHUB_ID ',
+    '%c process.env.GITHUBID ',
     'background: red; color: white',
-    process.env.GITHUB_ID
+    process.env.GITHUBID
   )
 
   if (loading) {
