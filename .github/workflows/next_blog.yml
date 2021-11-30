@@ -9,6 +9,7 @@ on:
 
 jobs:
   build:
+    # Running on VM requires runner
     runs-on: self-hosted
 
     strategy:
