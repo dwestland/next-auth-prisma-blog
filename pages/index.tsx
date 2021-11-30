@@ -5,6 +5,12 @@ import Navbar from '@/components/Navbar'
 const IndexPage = () => {
   const [session, loading] = useSession()
 
+  console.log(
+    '%c process.env.GITHUBID ',
+    'background: red; color: white',
+    process.env.GITHUBID
+  )
+
   if (loading) {
     return (
       <div className="container">
