@@ -8,7 +8,7 @@ const IndexPage = () => {
   console.log(
     '%c process.env.GITHUBID ',
     'background: red; color: white',
-    process.env.GITHUBID
+    process.env.NEXT_PUBLIC_API
   )
 
   if (loading) {
