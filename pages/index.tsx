@@ -5,11 +5,11 @@ import Navbar from '@/components/Navbar'
 const IndexPage = () => {
   const [session, loading] = useSession()
 
-  console.log(
-    '%c process.env.NEXT_PUBLIC_API ',
-    'background: red; color: white',
-    process.env.NEXT_PUBLIC_API
-  )
+  // console.log(
+  //   '%c process.env.NEXT_PUBLIC_API ',
+  //   'background: red; color: white',
+  //   process.env.NEXT_PUBLIC_API
+  // )
 
   if (loading) {
     return (
