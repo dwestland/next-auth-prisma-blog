@@ -76,8 +76,8 @@ To setup GitHub OAuth secrets, see https://github.com/dwestland/next-auth-github
 
 ```ini
 # Next Auth GitHub provider
-GITHUBID=
-GITHUBSECRET=
+GITHUB_ID=
+GITHUB_SECRET=
 ```
 
 To setup passwordless login secrets, you will need a SendGrid ??? see https://github.com/dwestland/next-auth-passwordless for instructions on ???
