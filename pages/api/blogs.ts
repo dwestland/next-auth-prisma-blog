@@ -7,16 +7,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   // if (req.method !== 'GET') {
   //   return res.status(405).json({ message: 'Method not allowed' })
   // }
-  console.log(
-    '%c process.env.DATABASE_URL ',
-    'background: red; color: white',
-    process.env.DATABASE_URL
-  )
-  console.log(
-    '%c process.env.SECRET ',
-    'background: red; color: white',
-    process.env.SECRET
-  )
 
   if (req.method === 'GET') {
     try {
