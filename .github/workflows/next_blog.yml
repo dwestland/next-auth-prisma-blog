@@ -17,6 +17,14 @@ jobs:
         node-version: [16.x]
 
     steps:
+      - name: Add Secrets
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          SECRET: ${{ secrets.SECRET }}
+          NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
+          AUTH_GITHUB_ID: ${{ secrets.AUTH_GITHUB_ID }}
+          AUTH_GITHUB_SECRET: ${{ secrets.AUTH_GITHUB_SECRET }}
+          NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
