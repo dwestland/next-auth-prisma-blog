@@ -20,27 +20,27 @@ jobs:
       - name: Add DATABASE_URL secret
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
-          run: echo "Added DATABASE_URL"
+        run: echo "Added DATABASE_URL"
       - name: Add SECRET secret
         env:
           SECRET: ${{ secrets.SECRET }}
-          run: echo "Added SECRET"
+        run: echo "Added SECRET"
       - name: Add NEXTAUTH_SECRET secret
         env:
           NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
-          run: echo "Added NEXTAUTH_SECRET"
-        - name: Add AUTH_GITHUB_ID secret
-          env:
-            AUTH_GITHUB_ID: ${{ secrets.AUTH_GITHUB_ID }}
-            run: echo "Added AUTH_GITHUB_ID"
-        - name: Add AUTH_GITHUB_SECRET secret
-          env:
-            AUTH_GITHUB_SECRET: ${{ secrets.AUTH_GITHUB_SECRET }}
-            run: echo "Added AUTH_GITHUB_SECRET"
-        - name: Add AUTH_GITHUB_CLIENT_ID secret
-          env:
-            AUTH_GITHUB_CLIENT_ID: ${{ secrets.AUTH_GITHUB_CLIENT_ID }}
-            run: echo "Added AUTH_GITHUB_CLIENT_ID"
+        run: echo "Added NEXTAUTH_SECRET"
+      - name: Add AUTH_GITHUB_ID secret
+        env:
+          AUTH_GITHUB_ID: ${{ secrets.AUTH_GITHUB_ID }}
+        run: echo "Added AUTH_GITHUB_ID"
+      - name: Add AUTH_GITHUB_SECRET secret
+        env:
+          AUTH_GITHUB_SECRET: ${{ secrets.AUTH_GITHUB_SECRET }}
+        run: echo "Added AUTH_GITHUB_SECRET"
+      - name: Add AUTH_GITHUB_CLIENT_ID secret
+        env:
+          AUTH_GITHUB_CLIENT_ID: ${{ secrets.AUTH_GITHUB_CLIENT_ID }}
+        run: echo "Added AUTH_GITHUB_CLIENT_ID"
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
