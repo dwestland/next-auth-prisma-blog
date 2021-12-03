@@ -45,7 +45,11 @@ jobs:
       - name: Add NEXT_PUBLIC_API secret
         env:
           NEXT_PUBLIC_API: ${{ secrets.NEXT_PUBLIC_API }}
-        run: echo "Added NEXT_PUBLIC_API"
+
+        if: env.NEXT_PUBLIC_API == 'https://next-auth-prisma-blog.westland.net/api'
+        run: echo "NEXT_PUBLIC_API is correct!"
+
+        # run: echo "Added NEXT_PUBLIC_API"
 
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
