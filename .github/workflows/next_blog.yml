@@ -31,44 +31,77 @@ jobs:
     name: Environment Variables
     runs-on: self-hosted
 
+    #   steps:
+    #     - uses: actions/checkout@v2
+    #     - name: Add DATABASE_URL secret
+    #       env:
+    #         DATABASE_URL: ${{ secrets.DATABASE_URL }}
+    #         SECRET: ${{ secrets.SECRET }}
+    #         NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
+    #         AUTH_GITHUB_ID: ${{ secrets.AUTH_GITHUB_ID }}
+    #         AUTH_GITHUB_SECRET: ${{ secrets.AUTH_GITHUB_SECRET }}
+    #         NEXT_PUBLIC_API: ${{ secrets.NEXT_PUBLIC_API }}
+    #       run: echo "Done"
+
+    #     - name: DATABASE_URL
+    #       if: env.DATABASE_URL == ''
+    #       run: echo "DATABASE_URL == ''"
+
+    #     - name: SECRET
+    #       if: env.SECRET == ''
+    #       run: echo "SECRET == ''"
+
+    #     - name: NEXTAUTH_URL
+    #       if: env.NEXTAUTH_URL == ''
+    #       run: echo "NEXTAUTH_URL == ''"
+
+    #     - name: AUTH_GITHUB_ID
+    #       if: env.AUTH_GITHUB_ID == ''
+    #       run: echo "AUTH_GITHUB_ID == ''"
+
+    #     - name: AUTH_GITHUB_SECRET
+    #       if: env.AUTH_GITHUB_SECRET == ''
+    #       run: echo "AUTH_GITHUB_SECRET == ''"
+
+    #     - name: NEXT_PUBLIC_API
+    #       if: env.NEXT_PUBLIC_API == ''
+    #       run: echo "NEXT_PUBLIC_API == ''"
+
+    #     - name: Double check NEXT_PUBLIC_API
+    #       if: env.NEXT_PUBLIC_API == 'https://next-auth-prisma-blog.westland.net/api'
+    #       run: echo "NEXT_PUBLIC_API is correct!"
+
+    # run: echo "Added NEXT_PUBLIC_API"
+
     steps:
-      - uses: actions/checkout@v2
       - name: Add DATABASE_URL secret
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: echo "Added DATABASE_URL"
+
+      - name: Add SECRET secret
+        env:
           SECRET: ${{ secrets.SECRET }}
+        run: echo "Added SECRET"
+
+      - name: Add NEXTAUTH_URL secret
+        env:
           NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
+        run: echo "Added NEXTAUTH_URL"
+
+      - name: Add AUTH_GITHUB_ID secret
+        env:
           AUTH_GITHUB_ID: ${{ secrets.AUTH_GITHUB_ID }}
+        run: echo "Added AUTH_GITHUB_ID"
+
+      - name: Add AUTH_GITHUB_SECRET secret
+        env:
           AUTH_GITHUB_SECRET: ${{ secrets.AUTH_GITHUB_SECRET }}
+        run: echo "Added AUTH_GITHUB_SECRET"
+
+      - name: Add NEXT_PUBLIC_API secret
+        env:
           NEXT_PUBLIC_API: ${{ secrets.NEXT_PUBLIC_API }}
-        run: echo "Done"
 
-      - name: DATABASE_URL
-        if: env.DATABASE_URL == ''
-        run: echo "DATABASE_URL == ''"
-
-      - name: SECRET
-        if: env.SECRET == ''
-        run: echo "SECRET == ''"
-
-      - name: NEXTAUTH_URL
-        if: env.NEXTAUTH_URL == ''
-        run: echo "NEXTAUTH_URL == ''"
-
-      - name: AUTH_GITHUB_ID
-        if: env.AUTH_GITHUB_ID == ''
-        run: echo "AUTH_GITHUB_ID == ''"
-
-      - name: AUTH_GITHUB_SECRET
-        if: env.AUTH_GITHUB_SECRET == ''
-        run: echo "AUTH_GITHUB_SECRET == ''"
-
-      - name: NEXT_PUBLIC_API
-        if: env.NEXT_PUBLIC_API == ''
-        run: echo "NEXT_PUBLIC_API == ''"
-
-      - name: Double check NEXT_PUBLIC_API
         if: env.NEXT_PUBLIC_API == 'https://next-auth-prisma-blog.westland.net/api'
         run: echo "NEXT_PUBLIC_API is correct!"
-
-        # run: echo "Added NEXT_PUBLIC_API"
