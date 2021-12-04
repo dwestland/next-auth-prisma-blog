@@ -42,6 +42,19 @@ jobs:
           AUTH_GITHUB_SECRET: ${{ secrets.AUTH_GITHUB_SECRET }}
           NEXT_PUBLIC_API: ${{ secrets.NEXT_PUBLIC_API }}
 
+        if: env.DATABASE_URL == ''
+        run: echo "DATABASE_URL == ''"
+        if: env.SECRET == ''
+        run: echo "SECRET == ''"
+        if: env.NEXTAUTH_URL == ''
+        run: echo "NEXTAUTH_URL == ''"
+        if: env.AUTH_GITHUB_ID == ''
+        run: echo "AUTH_GITHUB_ID == ''"
+        if: env.AUTH_GITHUB_SECRET == ''
+        run: echo "AUTH_GITHUB_SECRET == ''"
+        if: env.NEXT_PUBLIC_API == ''
+        run: echo "NEXT_PUBLIC_API == ''"
+
         if: env.NEXT_PUBLIC_API == 'https://next-auth-prisma-blog.westland.net/api'
         run: echo "NEXT_PUBLIC_API is correct!"
 
