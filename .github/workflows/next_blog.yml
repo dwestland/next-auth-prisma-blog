@@ -35,10 +35,6 @@ jobs:
       - name: Add DATABASE_URL secret
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
-        run: echo
-
-      - name
-        env:
           SECRET: ${{ secrets.SECRET }}
           NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
           AUTH_GITHUB_ID: ${{ secrets.AUTH_GITHUB_ID }}
