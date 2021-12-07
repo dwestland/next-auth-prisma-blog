@@ -35,8 +35,8 @@ const BlogItem: FC<Blog> = ({ article, userLikingOwnError }): JSX.Element => {
 
   const { id, title, body, author, _count, blogLike } = article
   const bestName = author.name ?? author.email
-  const url = `${process.env.NEXT_PUBLIC_API}/like/add`
-  const deleteUrl = `${process.env.NEXT_PUBLIC_API}/like/delete`
+  const url = `${process.env.NAPB_NEXT_PUBLIC_API}/like/add`
+  const deleteUrl = `${process.env.NAPB_NEXT_PUBLIC_API}/like/delete`
 
   useEffect(() => {
     console.log('%c blogLike ', 'background: green; color: white', blogLike)

@@ -23,7 +23,7 @@ const Details = () => {
   const { id } = router.query
 
   const fetchArticle = async () => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API}/blog/${+id}`)
+    const res = await fetch(`${process.env.NAPB_NEXT_PUBLIC_API}/blog/${+id}`)
     return res.json()
   }
 

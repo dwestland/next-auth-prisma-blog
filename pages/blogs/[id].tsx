@@ -27,7 +27,7 @@ interface Article {
 
 export default function Blog() {
   const fetchArticles = async () => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API}/blog`)
+    const res = await fetch(`${process.env.NAPB_NEXT_PUBLIC_API}/blog`)
 
     return res.json()
   }

@@ -6,9 +6,9 @@ const IndexPage = () => {
   const [session, loading] = useSession()
 
   // console.log(
-  //   '%c process.env.NEXT_PUBLIC_API ',
+  //   '%c process.env.NAPB_NEXT_PUBLIC_API ',
   //   'background: red; color: white',
-  //   process.env.NEXT_PUBLIC_API
+  //   process.env.NAPB_NEXT_PUBLIC_API
   // )
 
   if (loading) {
