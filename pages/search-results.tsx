@@ -15,7 +15,7 @@ interface SearchResults {
 }
 
 const searchResults = () => {
-  const url = `${process.env.NAPB_NEXT_PUBLIC_API}/blog/search`
+  const url = `${process.env.NEXT_PUBLIC_API}/blog/search`
   const router = useRouter()
   const searchTerm = router.query.term
 

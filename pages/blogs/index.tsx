@@ -30,12 +30,7 @@ interface Article {
 export default function Blogs() {
   const [session] = useSession()
   const [blogType, setBlogType] = useState('All Blogs')
-  const url = `${process.env.NAPB_NEXT_PUBLIC_API}/blogs`
-  /// //////////////////////////////////////////////////////////////////
-  // const fetchAllBlogs = async () => {
-  //   const res = await fetch(`${process.env.NAPB_NEXT_PUBLIC_API}/blogs`)
-  //   return res.json()
-  // }
+  const url = `${process.env.NEXT_PUBLIC_API}/blogs`
 
   const fetchAllBlogs = async () => {
     const res = await fetch(url, {

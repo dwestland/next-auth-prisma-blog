@@ -13,8 +13,8 @@ const AddBlog = () => {
     body: '',
   })
   const [session] = useSession()
-  const urlCount = `${process.env.NAPB_NEXT_PUBLIC_API}/blog/titleCount`
-  const urlAdd = `${process.env.NAPB_NEXT_PUBLIC_API}/blog/add`
+  const urlCount = `${process.env.NEXT_PUBLIC_API}/blog/titleCount`
+  const urlAdd = `${process.env.NEXT_PUBLIC_API}/blog/add`
 
   const handleInputChange = (e) => {
     const { name, value } = e.target

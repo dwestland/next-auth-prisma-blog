@@ -19,7 +19,7 @@ const DeleteModal: FC<ModalProps> = ({
     title: '',
     body: '',
   })
-  const url = `${process.env.NAPB_NEXT_PUBLIC_API}/blog/update`
+  const url = `${process.env.NEXT_PUBLIC_API}/blog/update`
 
   useEffect(() => {
     setValues({ title, body })

@@ -12,7 +12,7 @@ const DeleteModal: FC<ModalProps> = ({
   title,
   setShowDeleteModal,
 }): JSX.Element => {
-  const url = `${process.env.NAPB_NEXT_PUBLIC_API}/blog/delete`
+  const url = `${process.env.NEXT_PUBLIC_API}/blog/delete`
 
   const handleDelete = () => {
     fetch(url, {

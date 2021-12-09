@@ -5,12 +5,6 @@ import Navbar from '@/components/Navbar'
 const IndexPage = () => {
   const [session, loading] = useSession()
 
-  // console.log(
-  //   '%c process.env.NAPB_NEXT_PUBLIC_API ',
-  //   'background: red; color: white',
-  //   process.env.NAPB_NEXT_PUBLIC_API
-  // )
-
   if (loading) {
     return (
       <div className="container">
