@@ -64,45 +64,49 @@ Create .env in root using .env.example as a guide. Must have local Postgres avai
 
 ```ini
 # Prisma
-NAPB_DATABASE_URL=postgresql://johndoe:mypassword@localhost:5432/next_auth_prisma_blog?schema=public
+DATABASE_URL=postgresql://johndoe:mypassword@localhost:5432/next_auth_prisma_blog?schema=public
 
 # Next Auth
-NAPB_SECRET=# random string
+SECRET=# random string
 
-# NAPB_NEXTAUTH_URL= # Canonical URL when you deploy to production
+# NEXTAUTH_URL= # Canonical URL when you deploy to production
 ```
 
 To setup GitHub OAuth secrets, see https://github.com/dwestland/next-auth-github for instructions on ???
 
 ```ini
 # Next Auth GitHub provider
-NAPB_GITHUB_ID=
-NAPB_GITHUB_SECRET=
+GITHUB_ID=
+GITHUB_SECRET=
 ```
 
 To setup passwordless login secrets, you will need a SendGrid ??? see https://github.com/dwestland/next-auth-passwordless for instructions on ???
 
 ```ini
 # Next Auth SendGrid passwordless provider
-NAPB_EMAIL_SERVER_HOST=smtp.sendgrid.net
-NAPB_EMAIL_SERVER_PORT=465
-NAPB_EMAIL_SERVER_USER=# API key
-NAPB_EMAIL_SERVER_PASSWORD=
-NAPB_EMAIL_FROM=yourPostmaster@name.com
+EMAIL_SERVER_HOST=smtp.sendgrid.net
+EMAIL_SERVER_PORT=465
+EMAIL_SERVER_USER=# API key
+EMAIL_SERVER_PASSWORD=
+EMAIL_FROM=yourPostmaster@name.com
 ```
 
 To setup Google OAuth secrets, see https://github.com/dwestland/next-auth-github for instructions on ???
 
 ```ini
 # Google Next Auth Provider
-NAPB_GOOGLE_CLIENT_ID=
-NAPB_GOOGLE_CLIENT_SECRET=
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
 
 # Next API
-NAPB_NEXT_PUBLIC_API=http://localhost:3000/api
+NEXT_PUBLIC_API=http://localhost:3000/api
 ```
 
 ## Build Database
+
+If anybody running into this issue, just run
+`npx prisma generate`
+This will re-establish the link between schema.prisma and .env file.
 
 ### Migrate Prisma
 
