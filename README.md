@@ -16,20 +16,6 @@ start runner on server:
 ~/actions-runner/run.sh
 ```
 
-## User Story
-
-- User can login using GitHub or Google OAuth or passwordless login
-- User can retrieve blogs:
-  - Display all blogs
-  - Display only user's blogs
-  - Display only user's likes
-  - Display single blog detail with like functionality
-- User can create a blog
-- Use can only create blog with a unique title
-- User can only edit and delete only their own blog
-- User can like and unlike a blog but cannot like their own
-- Liking a blog will have preemptive UI display
-
 ## Stack
 
 - Next 11 (current version is 12)

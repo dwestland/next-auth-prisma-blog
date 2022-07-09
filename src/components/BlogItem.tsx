@@ -18,10 +18,6 @@ interface Blog {
       email: string
       id: number
     }
-    _count: {
-      blogLike: number
-    }
-    blogLike: any
   }
 }
 

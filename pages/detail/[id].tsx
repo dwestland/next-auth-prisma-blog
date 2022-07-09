@@ -12,9 +12,6 @@ interface Article {
       name: string
       email: string
     }
-    _count: {
-      blogLike: number
-    }
   }
 }
 
@@ -50,7 +47,7 @@ const Details = () => {
     'background: blue; color: white',
     data.article
   )
-  const { title, body, author, _count } = data.article
+  const { title, body, author } = data.article
   const bestName = author.name ?? author.email
 
   return (
@@ -61,7 +58,6 @@ const Details = () => {
       <p>
         By <i>{bestName}</i>
       </p>
-      <p>Likes {_count.blogLike}</p>
       <p>{body}</p>
     </div>
   )

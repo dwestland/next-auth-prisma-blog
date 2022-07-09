@@ -13,23 +13,15 @@ const AddBlog = () => {
     body: '',
   })
   const [session] = useSession()
-  const urlCount = `${process.env.NEXT_PUBLIC_API}/blog/titleCount`
-  const urlAdd = `${process.env.NEXT_PUBLIC_API}/blog/add`
+  const addBlogUrl = `${process.env.NEXT_PUBLIC_API}/blog/add`
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
     setValues({ ...values, [name]: value })
   }
 
-  const postBlog = (CountObj) => {
-    const { count } = CountObj.data
-
-    if (count > 0) {
-      toast.error('Title already exists!')
-      return null
-    }
-
-    fetch(urlAdd, {
+  const handlePostBlog = () => {
+    fetch(addBlogUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -67,26 +59,7 @@ const AddBlog = () => {
       toast.error('Please fill in all fields')
       return null
     }
-
-    // Check for duplicate title
-    // Get duplicate title count from server
-    // Callback function to post blog if no duplicate title
-    fetch(urlCount, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        data: {
-          title: `${values.title}`,
-        },
-      }),
-    })
-      .then((res) => res.json())
-      .then((countObj) => {
-        postBlog(countObj)
-      })
-      .catch((error) => console.warn(error))
+    handlePostBlog()
 
     return null
   }

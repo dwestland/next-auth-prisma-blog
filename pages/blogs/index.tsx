@@ -19,10 +19,6 @@ interface Article {
     name: string
     email: string
   }
-  _count: {
-    blogLike: number
-  }
-  blogLike: []
 }
 
 export default function Blogs() {
@@ -31,15 +27,15 @@ export default function Blogs() {
 
   const fetchAllBlogs = async () => {
     const res = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        data: {
-          user: 4,
-        },
-      }),
+      method: 'GET',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify({
+      //     data: {
+      //       user: 4,
+      //     },
+      //   }),
     })
     return res.json()
   }
