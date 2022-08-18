@@ -1,4 +1,4 @@
-const likes = [
+const users = [
   {
     name: 'Humphrey Bogart',
     email: 'bogart@gmail',
@@ -13,4 +13,4 @@ const likes = [
   },
 ]
 
-export default likes
+export default users
