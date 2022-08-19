@@ -3,9 +3,7 @@ import Providers from 'next-auth/providers'
 import Adapters from 'next-auth/adapters'
 
 import { NextApiHandler } from 'next'
-import { PrismaClient } from '@prisma/client'
-
-const prisma = new PrismaClient()
+import prisma from '@/lib/prisma'
 
 const options = {
   providers: [
