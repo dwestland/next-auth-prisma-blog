@@ -1,11 +1,11 @@
 import React from 'react'
 import Link from 'next/link'
 import Search from '@/components/Search'
-import styles from '@/styles/Navbar.module.css'
+import styles from '@/styles/Navbar.module.scss'
 
 export default function Navbar() {
   return (
-    <div>
+    <nav className={styles.nav}>
       <Search />
       <ul className={styles.ul}>
         <li className={styles.li}>
@@ -14,17 +14,16 @@ export default function Navbar() {
           </Link>
         </li>
         <li className={styles.li}>
+          <Link href="/two-column">
+            <a>Two Column</a>
+          </Link>
+        </li>
+        <li className={styles.li}>
           <Link href="/blogs">
             <a>Blogs</a>
           </Link>
         </li>
-        <li className={styles.li}>
-          <Link href="/blogs/add">
-            <a>Add Blog</a>
-          </Link>
-        </li>
       </ul>
-      <hr className={styles.hr} />
-    </div>
+    </nav>
   )
 }

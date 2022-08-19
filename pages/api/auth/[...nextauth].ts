@@ -27,7 +27,7 @@ const options = {
       from: process.env.EMAIL_FROM,
     }),
   ],
-  // @ts-ignore
+
   adapter: Adapters.Prisma.Adapter({
     prisma,
   }),
