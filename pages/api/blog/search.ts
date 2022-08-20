@@ -6,22 +6,24 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(405).json({ message: 'Method not allowed' })
   }
 
-  console.log(
-    '%c req.body.search.term ',
-    'background: red; color: white',
-    req.body.search.term
-  )
-
   try {
-    const articles = await prisma.blogs.findMany({
+    const blogs = await prisma.blogs.findMany({
       where: {
-        body: { contains: req.body.search.term, mode: 'insensitive' },
-
-        // title: { contains: req.body.search.term, mode: 'insensitive' },
+        body: { contains: req.body.search.term },
+      },
+      select: {
+        id: true,
+        title: true,
+        body: true,
+        author: {
+          select: {
+            name: true,
+          },
+        },
       },
     })
 
-    res.status(200).json({ articles })
+    res.status(200).json({ blogs })
   } catch (err) {
     console.log(err)
     res.status(403).json({ err: 'Error occurred.' })
