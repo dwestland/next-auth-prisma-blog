@@ -1,5 +1,5 @@
 import React from 'react'
-import { signIn, signOut, useSession } from 'next-auth/client'
+import { useSession } from 'next-auth/client'
 import Image from 'next/image'
 import Layout from '@/components/Layout'
 
@@ -11,37 +11,6 @@ const HomePage = () => {
   }
   return (
     <Layout title="Document" description="Document description">
-      {session && (
-        <div className="container">
-          <div>
-            Hello, {session.user.name ?? session.user.email}
-            <br />
-            <br />
-            <button type="button" className="btn" onClick={() => signOut()}>
-              Sign out
-            </button>
-          </div>
-        </div>
-      )}
-      {!session && (
-        <div>
-          You are not logged in
-          <br />
-          <br />
-          <button type="button" className="btn" onClick={() => signIn()}>
-            Sign in
-          </button>
-          <p>Or</p>
-          <button
-            type="button"
-            className="btn button-as-link"
-            onClick={() => signIn()}
-          >
-            Sign up
-          </button>
-        </div>
-      )}
-
       <main>
         <section>
           <h1>Welcome to App</h1>

@@ -154,6 +154,18 @@ section {
   }
 }
 
+.button-as-link {
+  background: none;
+  border: none;
+  color: var(--blue-050);
+  cursor: pointer;
+  text-decoration: none;
+  &:hover {
+    color: var(--blue-030);
+    text-decoration: underline;
+  }
+}
+
 /* Box Shadow
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .bs {
