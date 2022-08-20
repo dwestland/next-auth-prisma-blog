@@ -1,29 +1,32 @@
 import React, { FC, useState, useEffect, useRef } from 'react'
-import styles from '@/styles/ModalForm.module.scss'
-import { useMutation, useQueryClient } from 'react-query'
+import { useQuery, useMutation, useQueryClient } from 'react-query'
 import queryKeys from '@/constants/queryKeys'
 import apiRootUrl from '@/constants/apiRootUrl'
+import styles from '@/styles/ModalForm.module.scss'
 
 interface ModalProps {
-  id: number
-  title: string
-  body: string
   onClose: Function
 }
 
-const EditModal: FC<ModalProps> = ({
-  id,
-  title,
-  body,
-  onClose,
-}): JSX.Element => {
+interface User {
+  id: number
+  name: string
+}
+
+interface Users {
+  users?: {}[]
+}
+
+const AddModal: FC<ModalProps> = ({ onClose }) => {
   const queryClient = useQueryClient()
   const inputReference = useRef(null)
-  const url = `${apiRootUrl.NEXT_PUBLIC_API}/blogs`
+  const usersUrl = `${apiRootUrl.NEXT_PUBLIC_API}/users`
+  const blogsUrl = `${apiRootUrl.NEXT_PUBLIC_API}/blogs`
 
   const [errorMessage, setErrorMessage] = useState('')
   const [values, setValues] = useState({
     title: '',
+    authorId: '',
     body: '',
   })
 
@@ -31,33 +34,40 @@ const EditModal: FC<ModalProps> = ({
     inputReference.current.focus()
   }, [])
 
-  useEffect(() => {
-    setValues({ title, body })
-  }, [])
-
   const handleInputChange = (e) => {
     const { name, value } = e.target
     setValues({ ...values, [name]: value })
   }
 
-  const editBlog = async () => {
-    await fetch(url, {
-      method: 'PUT',
+  const fetchUsers = async () => {
+    const res = await fetch(usersUrl, {
+      method: 'GET',
+    })
+
+    return res.json()
+  }
+
+  const addBlog = async () => {
+    const authorId = parseInt(values.authorId, 10)
+    await fetch(blogsUrl, {
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         data: {
-          id,
           title: values.title,
           body: values.body,
+          authorId,
         },
       }),
     })
   }
 
-  const mutation = useMutation(editBlog, {
+  const mutation = useMutation(addBlog, {
     onSuccess: () => {
+      setValues({ title: '', body: '', authorId: '' })
+      setErrorMessage('')
       onClose()
     },
     onError: (err) => {
@@ -68,19 +78,38 @@ const EditModal: FC<ModalProps> = ({
     },
   })
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
+
+    // Validation
     const hasEmptyFields = Object.values(values).some(
       (element) => element === ''
     )
+
     if (hasEmptyFields) {
       setErrorMessage('Please fill in all fields')
       return null
     }
+
     mutation.mutate()
 
     return null
   }
+
+  const { data, error, isError } = useQuery<Users, Error>(
+    queryKeys.allUsers,
+    fetchUsers
+  )
+
+  if (isError) {
+    setErrorMessage(error.message)
+  }
+
+  const userArray = data?.users?.map((user: User) => (
+    <option key={user.id} value={user.id}>
+      {user.name}
+    </option>
+  ))
 
   return (
     <div>
@@ -100,6 +129,24 @@ const EditModal: FC<ModalProps> = ({
               />
             </label>
           </div>
+
+          <div className={styles.section}>
+            <label htmlFor="authorId">
+              Author
+              <br />
+              <select
+                onChange={(e) => handleInputChange(e)}
+                className={styles.userSelect}
+                name="authorId"
+                value={values.authorId}
+                id="authorId"
+              >
+                <option value="">&nbsp;</option>
+                {userArray}
+              </select>
+            </label>
+          </div>
+
           <div className={styles.section}>
             <label htmlFor="body">
               Body
@@ -112,9 +159,10 @@ const EditModal: FC<ModalProps> = ({
             </label>
           </div>
         </div>
+
         <div className={styles.buttonContainer}>
-          <button type="submit" className="primary-button">
-            Update
+          <button type="submit" className="primary-button" value="Add Blog">
+            Add Blog
           </button>
           <button
             className="ghost-button"
@@ -129,4 +177,4 @@ const EditModal: FC<ModalProps> = ({
   )
 }
 
-export default EditModal
+export default AddModal
