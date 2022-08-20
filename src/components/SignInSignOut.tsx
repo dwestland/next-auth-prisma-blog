@@ -9,7 +9,7 @@ const SignInSignOut = () => {
     <div className={styles.wrapper}>
       {session && (
         <div>
-          Hello, {session.user.name ?? session.user.email} &nbsp;
+          Hello {session.user.name ?? session.user.email} &nbsp;
           <button
             type="button"
             className="button-as-link"
@@ -21,7 +21,6 @@ const SignInSignOut = () => {
       )}
       {!session && (
         <div>
-          You are not logged in &nbsp;
           <button
             type="button"
             className="button-as-link"
