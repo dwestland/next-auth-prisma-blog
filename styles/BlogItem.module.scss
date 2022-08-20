@@ -2,7 +2,7 @@
   border: 1px solid lightgray;
   border-radius: 5px;
   margin: 20px auto;
-  max-width: 650px;
+  max-width: 100%;
   padding: 5px 0;
 }
 
@@ -20,7 +20,7 @@
 }
 
 .icon {
-  color: #000;
+  color: var(--blue-060);
   cursor: pointer;
 }
 
@@ -41,7 +41,3 @@
 .anchorClass {
   font-size: smaller;
 }
-
-/* .liked {
-  color: crimson;
-} */
