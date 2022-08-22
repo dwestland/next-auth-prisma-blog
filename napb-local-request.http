@@ -17,9 +17,9 @@ Content-Type: application/json
 {
   "data":
     {
-      "title": "My New Blog",
+      "title": "My New Blog 3",
       "body": "This is the body of the blog post",
-      "authorId": 2
+      "authorId": "cl72pfbk50006kwo17813t56u"
     }
 }
 
@@ -32,7 +32,7 @@ Content-Type: application/json
     {
       "title": "this blog has been editedx",
       "body": "xx oo",
-      "id": 27
+      "id": 2
     }
 }
 
@@ -54,6 +54,6 @@ Content-Type: application/json
 {
   "search":
     {
-      "term": "dance"
+      "term": "apollo"
     }
 }

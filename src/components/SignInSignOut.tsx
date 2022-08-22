@@ -1,9 +1,14 @@
 import React from 'react'
-import { signIn, signOut, useSession } from 'next-auth/client'
+import { signIn, signOut, useSession } from 'next-auth/react'
 import styles from '@/styles/SignInSignOut.module.scss'
 
 const SignInSignOut = () => {
-  const [session, loading] = useSession()
+  const { data: session, status } = useSession()
+  const loading = status === 'loading'
+
+  if (loading) {
+    return <div>Loading...</div>
+  }
 
   return (
     <div className={styles.wrapper}>

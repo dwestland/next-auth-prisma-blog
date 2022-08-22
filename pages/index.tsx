@@ -1,10 +1,13 @@
 import React from 'react'
-import { useSession } from 'next-auth/client'
+import { useSession } from 'next-auth/react'
 import Image from 'next/image'
 import Layout from '@/components/Layout'
 
 const HomePage = () => {
-  const [session, loading] = useSession()
+  const { data: session } = useSession()
+
+  // const { data: session, status } = useSession()
+  // const loading = status === 'loading'
 
   if (session) {
     console.log('%c session ', 'background: blue; color: white', session)
