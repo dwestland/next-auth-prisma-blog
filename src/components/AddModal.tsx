@@ -9,7 +9,7 @@ interface ModalProps {
 }
 
 interface User {
-  id: number
+  id: string
   name: string
 }
 
@@ -48,7 +48,6 @@ const AddModal: FC<ModalProps> = ({ onClose }) => {
   }
 
   const addBlog = async () => {
-    const authorId = parseInt(values.authorId, 10)
     await fetch(blogsUrl, {
       method: 'POST',
       headers: {
@@ -58,7 +57,7 @@ const AddModal: FC<ModalProps> = ({ onClose }) => {
         data: {
           title: values.title,
           body: values.body,
-          authorId,
+          authorId: values.authorId,
         },
       }),
     })
@@ -90,6 +89,14 @@ const AddModal: FC<ModalProps> = ({ onClose }) => {
       setErrorMessage('Please fill in all fields')
       return null
     }
+
+    console.log('%c title ', 'background: red; color: white', values.title)
+    console.log('%c body ', 'background: red; color: white', values.body)
+    console.log(
+      '%c authorId ',
+      'background: red; color: white',
+      values.authorId
+    )
 
     mutation.mutate()
 

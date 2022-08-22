@@ -9,7 +9,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const blogs = await prisma.blogs.findMany({
       where: {
-        body: { contains: req.body.search.term },
+        body: {
+          contains: req.body.search.term,
+          mode: 'insensitive',
+        },
       },
       select: {
         id: true,

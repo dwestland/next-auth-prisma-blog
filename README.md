@@ -1,6 +1,6 @@
 # next-auth-prisma-blog
 
-A blog site with authentication
+## A blog site with authentication
 
 **Run local dev environment:**
 
@@ -8,91 +8,27 @@ A blog site with authentication
 npm run dev
 ```
 
-### Github Actions:
-
-start runner on server:
-
-```
-~/actions-runner/run.sh
-```
-
 ## Stack
 
-- Next 11 (current version is 12)
+- Next 12
 - TypeScript
-- Prisma 3
+- Prisma 4
 - Postgres
-- Next Auth 3 (beta 4 is out)
+- Next Auth 4
   - Google OAuth
   - GitHub OAuth
   - Passwordless
-- React Query 3
-
-Add react-query:
-npm i react-query
-
-Add react-loader-spinner:
-npm i react-loader-spinner
-
-## Set up local dev environment
-
-**Install libraries:**
-
-```
-npm i
-```
+- React Query 3 (v4 is current)
 
 ### Set up database
 
-## Add Secrets:
-
-Create .env in root using .env.example as a guide. Must have local Postgres available:
-
-```ini
-# Prisma
-DATABASE_URL=postgresql://johndoe:mypassword@localhost:5432/next_auth_prisma_blog?schema=public
-
-# Next Auth
-SECRET=# random string
-
-# NEXTAUTH_URL= # Canonical URL when you deploy to production
-```
-
-To setup GitHub OAuth secrets, see https://github.com/dwestland/next-auth-github for instructions on ???
-
-```ini
-# Next Auth GitHub provider
-GITHUB_ID=
-GITHUB_SECRET=
-```
-
-To setup passwordless login secrets, you will need a SendGrid ??? see https://github.com/dwestland/next-auth-passwordless for instructions on ???
-
-```ini
-# Next Auth SendGrid passwordless provider
-EMAIL_SERVER_HOST=smtp.sendgrid.net
-EMAIL_SERVER_PORT=465
-EMAIL_SERVER_USER=# API key
-EMAIL_SERVER_PASSWORD=
-EMAIL_FROM=yourPostmaster@name.com
-```
-
-To setup Google OAuth secrets, see https://github.com/dwestland/next-auth-github for instructions on ???
-
-```ini
-# Google Next Auth Provider
-GOOGLE_CLIENT_ID=
-GOOGLE_CLIENT_SECRET=
-
-# Next API
-NEXT_PUBLIC_API=http://localhost:3000/api
-```
-
 ## Build Database
 
-If anybody running into this issue, just run
-`npx prisma generate`
-This will re-establish the link between schema.prisma and .env file.
+**Re-establish the link between schema.prisma and .env file**
+
+```
+npx prisma generate
+```
 
 ### Migrate Prisma
 
@@ -111,8 +47,6 @@ npx prisma db push
 ```
 npx prisma db seed
 ```
-
-You should be good to go...
 
 ## Nginx Server Blocks:
 

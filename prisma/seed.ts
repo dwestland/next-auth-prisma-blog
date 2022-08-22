@@ -1,17 +1,15 @@
-import prisma from '@/lib/prisma'
-import users from '../data/users'
-import articles from '../data/articles'
-import likes from '../data/likes'
+import prisma from '../src/lib/prisma'
+import users from '../seed-data/users'
+import blogs from '../seed-data/blogs'
+
+console.log('%c prisma ', 'background: red; color: white', prisma)
 
 async function main() {
   await prisma.user.createMany({
     data: users,
   })
   await prisma.blogs.createMany({
-    data: articles,
-  })
-  await prisma.blogLikes.createMany({
-    data: likes,
+    data: blogs,
   })
 }
 
@@ -20,4 +18,4 @@ main()
     console.error(e)
     process.exit(0)
   })
-  .finally(async () => await prisma.$disconnect)
+  .finally(async () => prisma.$disconnect)
