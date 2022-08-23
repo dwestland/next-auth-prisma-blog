@@ -1,4 +1,6 @@
 import React, { FC, useState, useEffect } from 'react'
+import { useSession } from 'next-auth/react'
+import toast, { Toaster } from 'react-hot-toast'
 import Link from 'next/link'
 import { FaTrashAlt, FaPencilAlt } from 'react-icons/fa'
 import Tooltip from 'rc-tooltip'
@@ -23,6 +25,7 @@ interface Blog {
 }
 
 const BlogItem: FC<Blog> = ({ blog }): JSX.Element => {
+  const { data: session } = useSession()
   const [showDeleteModal, setShowDeleteModal] = useState<boolean>(false)
   const [showEditModal, setShowEditModal] = useState<boolean>(false)
   const { id, title, body, author } = blog
@@ -40,17 +43,52 @@ const BlogItem: FC<Blog> = ({ blog }): JSX.Element => {
     documentBody.style.overflow = showDeleteModal ? 'hidden' : 'auto'
   }, [showDeleteModal])
 
-  const openDeleteModal = () => {
-    setShowDeleteModal(true)
+  const notifyEdit = () => {
+    toast('You must be logged in to edit a blog', {
+      style: {
+        borderBottom: '1px solid var(--red-050)',
+        borderLeft: '10px solid var(--red-050)',
+        borderRight: '10px solid var(--red-050)',
+        borderTop: '1px solid var(--red-050)',
+      },
+    })
+  }
+
+  const notifyDelete = () => {
+    toast('You must be logged in to delete a blog', {
+      style: {
+        borderBottom: '1px solid var(--red-050)',
+        borderLeft: '10px solid var(--red-050)',
+        borderRight: '10px solid var(--red-050)',
+        borderTop: '1px solid var(--red-050)',
+      },
+    })
   }
 
   const openEditModal = () => {
+    if (!session) {
+      console.log('%c session ', 'background: red; color: white', session)
+      notifyEdit()
+      return null
+    }
     setShowEditModal(true)
+    return null
+  }
+
+  const openDeleteModal = () => {
+    if (!session) {
+      console.log('%c session ', 'background: red; color: white', session)
+      notifyDelete()
+      return null
+    }
+    setShowDeleteModal(true)
+    return null
   }
 
   return (
     <div className={styles.blogItem}>
       <div className={styles.row}>
+        <Toaster />
         <span>
           <strong>{title}</strong>
         </span>
