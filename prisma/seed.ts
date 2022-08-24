@@ -2,8 +2,6 @@ import prisma from '../src/lib/prisma'
 import users from '../seed-data/users'
 import blogs from '../seed-data/blogs'
 
-console.log('%c prisma ', 'background: red; color: white', prisma)
-
 async function main() {
   await prisma.user.createMany({
     data: users,

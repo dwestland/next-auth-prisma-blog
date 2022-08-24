@@ -10,7 +10,6 @@ const HomePage = () => {
   // const loading = status === 'loading'
 
   if (session) {
-    console.log('%c session ', 'background: blue; color: white', session)
   }
   return (
     <Layout title="Document" description="Document description">
