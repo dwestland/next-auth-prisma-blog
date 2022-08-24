@@ -67,7 +67,6 @@ const BlogItem: FC<Blog> = ({ blog }): JSX.Element => {
 
   const openEditModal = () => {
     if (!session) {
-      console.log('%c session ', 'background: red; color: white', session)
       notifyEdit()
       return null
     }
@@ -77,7 +76,6 @@ const BlogItem: FC<Blog> = ({ blog }): JSX.Element => {
 
   const openDeleteModal = () => {
     if (!session) {
-      console.log('%c session ', 'background: red; color: white', session)
       notifyDelete()
       return null
     }

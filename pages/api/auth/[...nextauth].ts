@@ -12,7 +12,6 @@ export default NextAuth({
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET,
     }),
-
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
@@ -33,5 +32,12 @@ export default NextAuth({
   secret: process.env.SECRET,
   theme: {
     logo: '/images/earth.png',
+  },
+  callbacks: {
+    async session({ session, user }) {
+      session.userId = user.id
+
+      return session
+    },
   },
 })
