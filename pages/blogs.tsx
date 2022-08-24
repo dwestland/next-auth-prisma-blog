@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useQuery } from 'react-query'
+import { useSession } from 'next-auth/react'
+import toast, { Toaster } from 'react-hot-toast'
 import BlogItem from '@/components/BlogItem'
 import Layout from '@/components/Layout'
 import Modal from '@/components/Modal'
@@ -33,6 +35,7 @@ interface Blogs {
 }
 
 const BlogsPage = () => {
+  const { data: session } = useSession()
   const [showAddModal, setShowAddModal] = useState<boolean>(false)
   const url = `${apiRootUrl.NEXT_PUBLIC_API}/blogs`
 
@@ -53,6 +56,17 @@ const BlogsPage = () => {
     queryKeys.allBlogs,
     fetchAllBlogs
   )
+
+  const notify = () => {
+    toast('You must be logged in to add a blog', {
+      style: {
+        borderBottom: '1px solid var(--red-050)',
+        borderLeft: '10px solid var(--red-050)',
+        borderRight: '10px solid var(--red-050)',
+        borderTop: '1px solid var(--red-050)',
+      },
+    })
+  }
 
   const pageResult = () => {
     if (isLoading) {
@@ -77,13 +91,19 @@ const BlogsPage = () => {
   }
 
   const openAddModal = () => {
+    if (!session) {
+      notify()
+      return null
+    }
     setShowAddModal(true)
+    return null
   }
 
   return (
     <Layout title="Document" description="Document description">
       <main>
         <section>
+          <Toaster />
           <h1>Blogs</h1>
           <button
             type="button"

@@ -1,5 +1,6 @@
 import React, { FC, useState, useEffect, useRef } from 'react'
 import { useQuery, useMutation, useQueryClient } from 'react-query'
+import { useSession } from 'next-auth/react'
 import queryKeys from '@/constants/queryKeys'
 import apiRootUrl from '@/constants/apiRootUrl'
 import styles from '@/styles/ModalForm.module.scss'
@@ -8,16 +9,12 @@ interface ModalProps {
   onClose: Function
 }
 
-interface User {
-  id: string
-  name: string
-}
-
 interface Users {
   users?: {}[]
 }
 
 const AddModal: FC<ModalProps> = ({ onClose }) => {
+  const { data: session } = useSession()
   const queryClient = useQueryClient()
   const inputReference = useRef(null)
   const usersUrl = `${apiRootUrl.NEXT_PUBLIC_API}/users`
@@ -26,7 +23,6 @@ const AddModal: FC<ModalProps> = ({ onClose }) => {
   const [errorMessage, setErrorMessage] = useState('')
   const [values, setValues] = useState({
     title: '',
-    authorId: '',
     body: '',
   })
 
@@ -57,7 +53,7 @@ const AddModal: FC<ModalProps> = ({ onClose }) => {
         data: {
           title: values.title,
           body: values.body,
-          authorId: values.authorId,
+          authorId: session.userId,
         },
       }),
     })
@@ -65,7 +61,7 @@ const AddModal: FC<ModalProps> = ({ onClose }) => {
 
   const mutation = useMutation(addBlog, {
     onSuccess: () => {
-      setValues({ title: '', body: '', authorId: '' })
+      setValues({ title: '', body: '' })
       setErrorMessage('')
       onClose()
     },
@@ -89,21 +85,12 @@ const AddModal: FC<ModalProps> = ({ onClose }) => {
       setErrorMessage('Please fill in all fields')
       return null
     }
-
-    console.log('%c title ', 'background: red; color: white', values.title)
-    console.log('%c body ', 'background: red; color: white', values.body)
-    console.log(
-      '%c authorId ',
-      'background: red; color: white',
-      values.authorId
-    )
-
     mutation.mutate()
 
     return null
   }
 
-  const { data, error, isError } = useQuery<Users, Error>(
+  const { error, isError } = useQuery<Users, Error>(
     queryKeys.allUsers,
     fetchUsers
   )
@@ -111,12 +98,6 @@ const AddModal: FC<ModalProps> = ({ onClose }) => {
   if (isError) {
     setErrorMessage(error.message)
   }
-
-  const userArray = data?.users?.map((user: User) => (
-    <option key={user.id} value={user.id}>
-      {user.name}
-    </option>
-  ))
 
   return (
     <div>
@@ -136,24 +117,6 @@ const AddModal: FC<ModalProps> = ({ onClose }) => {
               />
             </label>
           </div>
-
-          <div className={styles.section}>
-            <label htmlFor="authorId">
-              Author
-              <br />
-              <select
-                onChange={(e) => handleInputChange(e)}
-                className={styles.userSelect}
-                name="authorId"
-                value={values.authorId}
-                id="authorId"
-              >
-                <option value="">&nbsp;</option>
-                {userArray}
-              </select>
-            </label>
-          </div>
-
           <div className={styles.section}>
             <label htmlFor="body">
               Body
