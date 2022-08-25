@@ -1,7 +1,7 @@
 /* eslint-disable arrow-body-style */
 import React, { FC } from 'react'
 import Head from 'next/head'
-import SignInSignOut from '@/components/signInSignOut'
+import SignInSignOut from '@/components/SignInSignOut'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import Header from './Header'
