@@ -8,6 +8,7 @@ generator client {
   previewFeatures = ["fullTextSearch"]
 }
 
+// next-auth
 model Account {
   id                 String  @id @default(cuid())
   userId             String  @map("user_id")
@@ -28,6 +29,7 @@ model Account {
   @@map("accounts")
 }
 
+// next-auth
 model Session {
   id           String   @id @default(cuid())
   sessionToken String   @unique @map("session_token")
@@ -38,16 +40,18 @@ model Session {
   @@map("sessions")
 }
 
+// next-auth
 model User {
   id            String    @id @default(cuid())
   name          String?
-  email         String?   @unique
+  email         String    @unique
   emailVerified DateTime? @map("email_verified")
   image         String?
-  accounts      Account[]
-  sessions      Session[]
+  role Role     @default(USER)
 
-  blogs    Blogs[]
+  accounts  Account[]
+  sessions  Session[]
+  blogs     Blogs[]
 
   createdAt DateTime @default(now()) @map(name: "created_at")
   updatedAt DateTime @default(now()) @map(name: "updated_at")
@@ -55,6 +59,7 @@ model User {
   @@map("users")
 }
 
+// next-auth
 model VerificationToken {
   identifier String
   token      String   @unique
@@ -63,8 +68,6 @@ model VerificationToken {
   @@unique([identifier, token])
   @@map("verificationtokens")
 }
-
-
 
 model Blogs {
   id    Int    @id @default(autoincrement())
@@ -78,4 +81,9 @@ model Blogs {
   updatedAt DateTime @default(now()) @map(name: "updated_at")
 
   @@map(name: "blogs")
+}
+
+enum Role {
+  USER
+  ADMIN
 }
