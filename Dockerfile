@@ -1,13 +1,14 @@
-FROM node:16-alpine
+FROM node:16.4-buster
 
 WORKDIR /app
 
 COPY package.json package-lock.json ./
+
 RUN npm install
 
-# COPY next.config.js ./next.config.js
-
 COPY . .
+
+RUN npx prisma generate
 
 EXPOSE 3000
 

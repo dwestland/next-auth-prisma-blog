@@ -1,36 +1,37 @@
-version: '3'
+version: '3.9'
 
 services:
   db:
     image: postgres:14-alpine
+    container_name: 'next-auth-prisma-blog-db'
     restart: always
+
     ports:
       - '5432:5432'
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      # - POSTGRES_DB=next-auth-prisma-blog
-      # - DATABASE_HOST=127.0.0.1
+
     volumes:
       - postgres:/var/lib/postgresql/data
-    # networks:
-    #   - overlay
+
   app:
     image: napb-app
+    container_name: 'next-auth-prisma-blog-app'
     build: .
     ports:
       - '3000:3000'
+
+    volumes:
+      - ./pages:/app/pages
+      - ./public:/app/public
+      - ./styles:/app/styles
+      - ./src:/app/src
+      - ./prisma:/app/prisma
+
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/next_auth_prisma_blog?schema=public
+
     depends_on:
       - db
-    # networks:
-    #   - overlay
-
 volumes:
   postgres:
-# networks:
-#   overlay:
 #
-#
-# docker composeup -d
 # docker-compose up --build --force-recreate
-# docker-compose down
