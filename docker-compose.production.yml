@@ -12,22 +12,19 @@ services:
 
   app:
     image: napb-app
+    build:
+      context: ./
+      dockerfile: Dockerfile.production
     container_name: 'next-auth-prisma-blog-app'
-    build: .
     ports:
       - '3000:3000'
-    volumes:
-      - ./pages:/app/pages
-      - ./public:/app/public
-      - ./styles:/app/styles
-      - ./src:/app/src
-      - ./prisma:/app/prisma
     environment:
       - DATABASE_URL=postgresql://postgres:postgres@db:5432/next_auth_prisma_blog?schema=public
+
     depends_on:
       - db
 
 volumes:
   postgres:
 #
-# docker-compose up --build --force-recreate
+# docker-compose -f docker-compose.production.yml up --build --force-recreate

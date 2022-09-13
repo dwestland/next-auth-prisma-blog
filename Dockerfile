@@ -1,14 +1,15 @@
+# Cannot run alpine or slim on M1 Mac
 FROM node:16.4-buster
 
 WORKDIR /app
 
 COPY package.json package-lock.json ./
-
 RUN npm install
 
-COPY . .
-
+COPY prisma ./prisma
 RUN npx prisma generate
+
+COPY . .
 
 EXPOSE 3000
 
