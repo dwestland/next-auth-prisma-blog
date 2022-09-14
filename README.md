@@ -8,21 +8,19 @@
 npm run dev
 ```
 
-## Stack
+**Run Docker**
 
-- Next 12
-- TypeScript
-- Prisma 4
-- Postgres
-- Next Auth 4
-  - Google OAuth
-  - GitHub OAuth
-  - Passwordless
-- React Query 3 (v4 is current)
+```
+docker-compose up
+```
 
-### Set up database
+**Or**
 
-## Build Database
+```
+docker-compose up --build --force-recreate
+```
+
+## Database
 
 **Re-establish the link between schema.prisma and .env file**
 
@@ -50,52 +48,31 @@ npx prisma db seed
 
 ## Nginx Server Blocks:
 
-### Initial block:
-
-```ini
-server {
-  listen 80;
-  listen [::]:80;
-
-  server_name next-auth-prisma-blog.westland.net;
-  root /srv/www/next-auth-prisma-blog.westland.net;
-  index index.html;
-
-  access_log  /var/log/nginx/next-auth-prisma-blog.westland.net_access.log;
-  error_log  /var/log/nginx/next-auth-prisma-blog.westland.net_error.log;
-
-  location / {
-    try_files $uri $uri/ =404;
-  }
-}
-```
-
 ### Certbot block:
 
 ```ini
 # Redirect from http to https
 server {
-  listen 80;
+  listen  80;
   listen [::]:80;
   access_log off;
   error_log off;
-  server_name next-auth-prisma-blog.westland.net;
-  return 301 https://$host$request_uri;
-  root /srv/www/next-auth-prisma-blog.westland.net;
+
+  server_name qrcodesr.us www.qrcodesr.us;
+  return 301 https://www.qrcodesr.us$request_uri;
 }
 
+# Redirect from non-www to www
 server {
   listen 443 ssl http2;
   listen [::]:443 ssl http2;
-
-  server_name next-auth-prisma-blog.westland.net;
-  root /srv/www/next-auth-prisma-blog.westland.net;
+  root /srv/www/www.qrcodesr.us;
   index index.html;
 
-  ssl_certificate /etc/letsencrypt/live/next-auth-prisma-blog.westland.net/fullchain.pem;
-  ssl_certificate_key /etc/letsencrypt/live/next-auth-prisma-blog.westland.net/privkey.pem;
+  ssl_certificate /etc/letsencrypt/live/www.qrcodesr.us/fullchain.pem;
+  ssl_certificate_key /etc/letsencrypt/live/www.qrcodesr.us/privkey.pem;
 
-  access_log  /var/log/nginx/next-auth-prisma-blog.westland.net_access.log;
-  error_log  /var/log/nginx/next-auth-prisma-blog.westland.net_error.log;
+  access_log  /var/log/nginx/www.qrcodes.us_access.log;
+  error_log  /var/log/nginx/www.qrcodes.us_error.log;
 }
 ```
