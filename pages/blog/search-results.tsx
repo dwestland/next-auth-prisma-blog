@@ -3,7 +3,6 @@ import { useQuery } from 'react-query'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import Layout from '@/components/Layout'
-import apiRootUrl from '@/constants/apiRootUrl'
 
 interface Search {
   blogs: []
@@ -16,7 +15,7 @@ interface SearchResults {
 }
 
 const searchResults = () => {
-  const url = `${apiRootUrl.NEXT_PUBLIC_API}/blog/search`
+  const url = `${process.env.NEXT_PUBLIC_API}/blog/search`
   const router = useRouter()
   const searchTerm = router.query.term
 

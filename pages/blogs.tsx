@@ -7,7 +7,6 @@ import Layout from '@/components/Layout'
 import Modal from '@/components/Modal'
 import AddModal from '@/components/AddModal'
 import queryKeys from '@/constants/queryKeys'
-import apiRootUrl from '@/constants/apiRootUrl'
 
 interface Blog {
   id: number
@@ -37,7 +36,7 @@ interface Blogs {
 const BlogsPage = () => {
   const { data: session } = useSession()
   const [showAddModal, setShowAddModal] = useState<boolean>(false)
-  const url = `${apiRootUrl.NEXT_PUBLIC_API}/blogs`
+  const url = `${process.env.NEXT_PUBLIC_API}/blogs`
 
   // Lock scroll when modal visible
   useEffect(() => {

@@ -26,6 +26,14 @@ const TwoColumnPage = () => (
       </section>
       <aside>
         <h3>Aside</h3>
+        <Image
+          src="/images/grace-hopper.jpg"
+          width={600}
+          height={400}
+          alt="Grace Hopper"
+        />
+        <br />
+        <br />
         <Image src="/images/eniac.jpg" width={600} height={400} alt="ENIAC" />
         <br />
         <br />
