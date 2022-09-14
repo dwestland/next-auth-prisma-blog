@@ -37,7 +37,7 @@ interface Blogs {
 const BlogsPage = () => {
   const { data: session } = useSession()
   const [showAddModal, setShowAddModal] = useState<boolean>(false)
-  const url = `${apiRootUrl.NEXT_PUBLIC_API}/blogs`
+  const url = `${process.env.NEXT_PUBLIC_API}/blogs`
 
   // Lock scroll when modal visible
   useEffect(() => {

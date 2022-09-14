@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { useQuery } from 'react-query'
 import { useRouter } from 'next/router'
 import Layout from '@/components/Layout'
-import apiRootUrl from '@/constants/apiRootUrl'
 
 interface Blog {
   blog: {
@@ -21,7 +20,7 @@ const BlogDetailPage = () => {
   const { id } = router.query
 
   const fetchBlog = async () => {
-    const res = await fetch(`${apiRootUrl.NEXT_PUBLIC_API}/blog/${+id}`)
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API}/blog/${+id}`)
     return res.json()
   }
 
