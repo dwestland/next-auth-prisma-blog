@@ -59,10 +59,10 @@ const BlogsPage = () => {
   const notify = () => {
     toast('You must be logged in to add a blog', {
       style: {
-        borderBottom: '1px solid var(--red-050)',
-        borderLeft: '10px solid var(--red-050)',
-        borderRight: '10px solid var(--red-050)',
-        borderTop: '1px solid var(--red-050)',
+        borderBottom: '1px solid crimson',
+        borderLeft: '10px solid crimson',
+        borderRight: '10px solid crimson',
+        borderTop: '1px solid crimson',
       },
     })
   }

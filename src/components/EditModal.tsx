@@ -90,6 +90,7 @@ const EditModal: FC<ModalProps> = ({
             <label htmlFor="title">
               Title
               <input
+                spellCheck="true"
                 type="text"
                 id="title"
                 name="title"
@@ -103,6 +104,7 @@ const EditModal: FC<ModalProps> = ({
             <label htmlFor="body">
               Body
               <textarea
+                spellCheck="true"
                 name="body"
                 id="body"
                 value={values.body}

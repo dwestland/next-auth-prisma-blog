@@ -46,10 +46,10 @@ const BlogItem: FC<Blog> = ({ blog }): JSX.Element => {
   const notifyEdit = () => {
     toast('You must be logged in to edit a blog', {
       style: {
-        borderBottom: '1px solid var(--red-050)',
-        borderLeft: '10px solid var(--red-050)',
-        borderRight: '10px solid var(--red-050)',
-        borderTop: '1px solid var(--red-050)',
+        borderBottom: '1px solid crimson',
+        borderLeft: '10px solid crimson',
+        borderRight: '10px solid crimson',
+        borderTop: '1px solid crimson',
       },
     })
   }
@@ -57,10 +57,10 @@ const BlogItem: FC<Blog> = ({ blog }): JSX.Element => {
   const notifyDelete = () => {
     toast('You must be logged in to delete a blog', {
       style: {
-        borderBottom: '1px solid var(--red-050)',
-        borderLeft: '10px solid var(--red-050)',
-        borderRight: '10px solid var(--red-050)',
-        borderTop: '1px solid var(--red-050)',
+        borderBottom: '1px solid crimson',
+        borderLeft: '10px solid crimson',
+        borderRight: '10px solid crimson',
+        borderTop: '1px solid crimson',
       },
     })
   }

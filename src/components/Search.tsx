@@ -16,7 +16,7 @@ const Search = () => {
       <form onSubmit={handleSubmit}>
         <input
           className={styles.input}
-          type="text"
+          type="search"
           value={term}
           onChange={(e) => setTerm(e.target.value)}
           placeholder="Search Blogs"
