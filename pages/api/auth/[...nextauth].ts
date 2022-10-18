@@ -4,7 +4,7 @@ import GithubProvider from 'next-auth/providers/github'
 import GoogleProvider from 'next-auth/providers/google'
 import EmailProvider from 'next-auth/providers/email'
 
-import prisma from '@/lib/prisma'
+import prisma from '@/utils/prisma'
 
 export default NextAuth({
   providers: [

@@ -1,6 +1,8 @@
-import prisma from '../src/lib/prisma'
+import { PrismaClient } from '@prisma/client'
 import users from '../seed-data/users'
 import blogs from '../seed-data/blogs'
+
+const prisma = new PrismaClient()
 
 async function main() {
   await prisma.user.createMany({
