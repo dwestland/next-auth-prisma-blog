@@ -46,6 +46,8 @@ npx prisma db push
 npx prisma db seed
 ```
 
+scp /Users/don/dev/next-auth-prisma-blog/.env.development.local don@dallas.westland.net:/srv/apps/next-auth-prisma-blog/
+
 ## Nginx Server Blocks:
 
 ### Certbot block:
