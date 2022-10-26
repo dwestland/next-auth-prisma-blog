@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { useMutation, useQueryClient } from 'react-query'
-import queryKeys from '@/constants/queryKeys'
+import queryKeys from '@/common/constants/queryKeys'
 import styles from '@/styles/ModalForm.module.scss'
 
 interface ModalProps {

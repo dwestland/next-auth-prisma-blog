@@ -1,7 +1,7 @@
 import React, { FC, useState, useEffect, useRef } from 'react'
 import { useQuery, useMutation, useQueryClient } from 'react-query'
 import { useSession } from 'next-auth/react'
-import queryKeys from '@/constants/queryKeys'
+import queryKeys from '@/common/constants/queryKeys'
 import styles from '@/styles/ModalForm.module.scss'
 
 interface ModalProps {

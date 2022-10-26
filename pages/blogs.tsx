@@ -6,7 +6,7 @@ import BlogItem from '@/components/BlogItem'
 import Layout from '@/components/Layout'
 import Modal from '@/components/Modal'
 import AddModal from '@/components/AddModal'
-import queryKeys from '@/constants/queryKeys'
+import queryKeys from '@/common/constants/queryKeys'
 
 interface Blog {
   id: number

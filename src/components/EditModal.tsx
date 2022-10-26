@@ -1,7 +1,7 @@
 import React, { FC, useState, useEffect, useRef } from 'react'
 import styles from '@/styles/ModalForm.module.scss'
 import { useMutation, useQueryClient } from 'react-query'
-import queryKeys from '@/constants/queryKeys'
+import queryKeys from '@/common/constants/queryKeys'
 
 interface ModalProps {
   id: number

@@ -3,33 +3,32 @@ import { PrismaAdapter } from '@next-auth/prisma-adapter'
 import GithubProvider from 'next-auth/providers/github'
 import GoogleProvider from 'next-auth/providers/google'
 import EmailProvider from 'next-auth/providers/email'
-import { requireEnvVariable } from '@/utils/common'
-import prisma from '@/utils/prisma'
+import prisma from '@/common/prisma'
 
 export default NextAuth({
   providers: [
     GithubProvider({
-      clientId: requireEnvVariable('GITHUB_ID'),
-      clientSecret: requireEnvVariable('GITHUB_SECRET'),
+      clientId: process.env.GITHUB_ID,
+      clientSecret: process.env.GITHUB_SECRET,
     }),
     GoogleProvider({
-      clientId: requireEnvVariable('GOOGLE_CLIENT_ID'),
-      clientSecret: requireEnvVariable('GOOGLE_CLIENT_SECRET'),
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
     EmailProvider({
       server: {
-        host: requireEnvVariable('EMAIL_SERVER_HOST'),
-        port: requireEnvVariable('EMAIL_SERVER_PORT'),
+        host: process.env.EMAIL_SERVER_HOST,
+        port: process.env.EMAIL_SERVER_PORT,
         auth: {
-          user: requireEnvVariable('EMAIL_SERVER_USER'),
-          pass: requireEnvVariable('EMAIL_SERVER_PASSWORD'),
+          user: process.env.EMAIL_SERVER_USER,
+          pass: process.env.EMAIL_SERVER_PASSWORD,
         },
       },
-      from: requireEnvVariable('EMAIL_FROM'),
+      from: process.env.EMAIL_FROM,
     }),
   ],
   adapter: PrismaAdapter(prisma),
-  secret: requireEnvVariable('SECRET'),
+  secret: process.env.SECRET,
   theme: {
     logo: '/images/earth.png',
   },
