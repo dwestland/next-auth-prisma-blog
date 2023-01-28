@@ -29,9 +29,7 @@ const Modal: FC<ModalProps> = ({ show, onClose, children, modalTitle }) => {
             type="button"
             onClick={handleClose}
           >
-            <a>
-              <FaTimes />
-            </a>
+            <FaTimes />
           </button>
           {modalTitle && <h2>{modalTitle}</h2>}
         </div>

@@ -43,6 +43,7 @@ const AddModal: FC<ModalProps> = ({ onClose }) => {
   }
 
   const addBlog = async () => {
+    const { userId } = session as any
     await fetch(blogsUrl, {
       method: 'POST',
       headers: {
@@ -52,7 +53,7 @@ const AddModal: FC<ModalProps> = ({ onClose }) => {
         data: {
           title: values.title,
           body: values.body,
-          authorId: session.userId,
+          authorId: userId,
         },
       }),
     })

@@ -60,9 +60,7 @@ const searchResults = () => {
       <p key={blog.id}>
         <strong>{blog.title}</strong>
         &nbsp;-&nbsp;
-        <Link href={`/blog/${blog.id}`}>
-          <a>Blog detail</a>
-        </Link>
+        <Link href={`/blog/${blog.id}`}>Blog details</Link>
       </p>
     ))
     return results

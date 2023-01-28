@@ -109,7 +109,7 @@ const BlogsPage = () => {
             className="primary-button"
             onClick={openAddModal}
           >
-            <a>Add Blog</a>
+            Add Blog
           </button>
           {pageResult()}
         </section>
