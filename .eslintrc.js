@@ -55,4 +55,14 @@ module.exports = {
   globals: {
     JSX: true,
   },
+  // This rule is not part of the recommended set of rules in the
+  // 'eslint-plugin-react' package, it is not a standard eslint rule.
+  // Fix for 'Function component is not a function' error
+  // This was a bug in the airbnb configuration versions 18.2.1 to 19.0.2
+  'react/function-component-definition': [
+    2,
+    {
+      namedComponents: 'function-declaration',
+    },
+  ],
 }

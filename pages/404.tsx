@@ -11,9 +11,7 @@ const NotFound = () => (
         <p>
           The page you are looking for does not exist; it may have been moved,
           or removed altogether. You can return to the{' '}
-          <Link href="/">
-            <a>Home Page</a>
-          </Link>
+          <Link href="/">Home Page</Link>
         </p>
       </section>
     </main>

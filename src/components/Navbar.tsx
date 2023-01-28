@@ -9,19 +9,13 @@ export default function Navbar() {
       <Search />
       <ul className={styles.ul}>
         <li className={styles.li}>
-          <Link href="/">
-            <a>Home</a>
-          </Link>
+          <Link href="/">Home</Link>
         </li>
         <li className={styles.li}>
-          <Link href="/two-column">
-            <a>Two Column</a>
-          </Link>
+          <Link href="/two-column">Two Column</Link>
         </li>
         <li className={styles.li}>
-          <Link href="/blogs">
-            <a>Blogs</a>
-          </Link>
+          <Link href="/blogs">Blogs</Link>
         </li>
       </ul>
     </nav>
