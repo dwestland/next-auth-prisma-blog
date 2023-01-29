@@ -15,7 +15,16 @@ const HomePage = () => (
           delectus magnam. Excepturi, esse suscipit facere dolore deleniti
           temporibus odit inventore, beatae possimus quae placeat quasi
         </p>
-        <Image src="/images/ibm.jpg" width={600} height={400} alt="ENIAC" />
+        <Image
+          src="/images/ibm.jpg"
+          style={{
+            maxWidth: '600px',
+            maxHeight: '400px',
+          }}
+          width={600}
+          height={400}
+          alt="ENIAC"
+        />
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla
           obcaecati quam commodi perspiciatis aut sequi, corporis numquam
