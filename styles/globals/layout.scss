@@ -1,23 +1,5 @@
-// body {
-//   border: 1px solid red;
-// }
-// div {
-//   border: 1px solid black;
-// }
-// section {
-//   border: 1px solid green;
-// }
-// .container {
-//   border: 1px solid red;
-// }
-// main {
+// * {
 //   border: 1px solid blue;
-// }
-// aside {
-//   border: 1px solid orange;
-// }
-// footer {
-//   border: 2px solid black;
 // }
 
 /* Layout Styles
@@ -164,6 +146,12 @@ section {
     color: var(--blue-030);
     text-decoration: underline;
   }
+}
+
+.big-button {
+  border-radius: 8px;
+  font-size: 1.5rem;
+  padding: 15px 30px;
 }
 
 /* Box Shadow
