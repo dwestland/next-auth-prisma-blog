@@ -15,13 +15,7 @@ export default function Navbar() {
           <Link href="/two-column">Two Column</Link>
         </li>
         <li className={styles.li}>
-          <Link href="/pricing">Pricing</Link>
-        </li>
-        <li className={styles.li}>
           <Link href="/blogs">Blogs</Link>
-        </li>
-        <li className={styles.li}>
-          <Link href="/my-dreams">My Dreams</Link>
         </li>
       </ul>
     </nav>

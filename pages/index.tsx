@@ -1,8 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
 import Layout from '@/components/Layout'
-import styles from '@/styles/Home.module.scss'
 
 const HomePage = () => (
   <Layout title="Document" description="Document description">
