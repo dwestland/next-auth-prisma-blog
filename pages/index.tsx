@@ -6,33 +6,34 @@ import styles from '@/styles/Home.module.scss'
 
 const HomePage = () => (
   <Layout title="Document" description="Document description">
-    <main className={styles.homePage}>
+    <main>
       <section>
-        <h1>Interpret Your Dreams for FREE</h1>
-        <p className={styles.openingParagraph}>
-          Discover the untold stories of your mind with our GPT-3 powered dream
-          analyzer. No more asking, "What did my dream mean?" Unveil the secrets
-          of your subconscious. Ready for some self-discovery? Unlock Your
-          Dreams Now.
+        <h1>Welcome to App</h1>
+        <h3>Section</h3>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla
+          obcaecati quam commodi perspiciatis aut sequi, corporis numquam
+          reiciendis necessitatibus eligendi deserunt voluptatem iste ea
+          delectus magnam. Excepturi, esse suscipit facere dolore deleniti
+          temporibus odit inventore, beatae possimus quae placeat quasi
         </p>
-        <h3>Analyze Your Dreams</h3>
-        <div className={styles.buttonWrapper}>
-          <Link href="/pricing" className="link-as-button big-button">
-            Get Started
-          </Link>
-        </div>
-        <div className={styles.imageWrapper}>
-          <Image
-            src="/images/sleeping-couple.jpg"
-            style={{
-              maxWidth: '660px',
-              maxHeight: '440px',
-            }}
-            width={660}
-            height={440}
-            alt="Sleeping Couple"
-          />
-        </div>
+        <Image
+          src="/images/ibm.jpg"
+          style={{
+            maxWidth: '600px',
+            maxHeight: '400px',
+          }}
+          width={600}
+          height={400}
+          alt="ENIAC"
+        />
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla
+          obcaecati quam commodi perspiciatis aut sequi, corporis numquam
+          reiciendis necessitatibus eligendi deserunt voluptatem iste ea
+          delectus magnam. Excepturi, esse suscipit facere dolore deleniti
+          temporibus odit inventore, beatae possimus quae placeat quasi
+        </p>
       </section>
     </main>
   </Layout>
