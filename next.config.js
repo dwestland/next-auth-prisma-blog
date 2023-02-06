@@ -4,5 +4,5 @@ module.exports = {
   images: {
     domains: ['localhost', 'next-auth-prisma-blog.westland.net'],
   },
-  crossOrigin: 'anonymous',
+  // crossOrigin: 'anonymous',
 }
